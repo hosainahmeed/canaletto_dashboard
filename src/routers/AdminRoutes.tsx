@@ -1,6 +1,7 @@
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import ManageClients from '../pages/admin/clients/ManageClients';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
+import PropertyManager from '../pages/admin/property-manager/PropertyManager';
 
 export const adminRoutes = {
   children: [
@@ -18,7 +19,7 @@ export const adminRoutes = {
     },
     {
       path: "/admin/property-manager",
-      element: <h1>Property Manager</h1>
+      element: <PropertyManager/>
     },
     {
       path: "/admin/content-management",

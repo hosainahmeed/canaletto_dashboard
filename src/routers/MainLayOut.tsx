@@ -1,6 +1,6 @@
 import { Loader } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { ROLES, type Role } from "../lib/roles";
@@ -11,8 +11,8 @@ function MainLayOut() {
   const user = {
     name: "John Doe",
     avatar: "https://via.placeholder.com/150",
-    role: "content_admin" as Role,
-    isLoggedIn: true,
+    role: "admin" as Role,
+    isLoggedIn: false,
   }
   useEffect(() => {
     const load = async () => {
@@ -50,6 +50,9 @@ function MainLayOut() {
     return <div className="fixed top-0 left-0 w-full h-full z-999 flex items-center justify-center">
       <Loader className="animate-spin" />
     </div>
+  }
+  if (!user.isLoggedIn) {
+    return <Outlet />
   }
   return (
     <div className="flex flex-col justify-center">
