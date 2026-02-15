@@ -62,7 +62,7 @@ function AdminDashboard() {
           <StatusCard key={index} title={item.title} value={item.value} icon={item.icon} />
         ))}
       </div>
-      <Space size={4} />
+      <Space  size={4}/>
       <FormalCard header={
         renderHeader
       }>
