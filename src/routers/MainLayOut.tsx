@@ -8,11 +8,12 @@ function MainLayOut() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const navigate = useNavigate()
   const [loading, setLoading] = useState<boolean>(false)
+
   const user = {
     name: "John Doe",
     avatar: "https://via.placeholder.com/150",
     role: "admin" as Role,
-    isLoggedIn: false,
+    isLoggedIn: localStorage.getItem("isLoggedIn") === "true",
   }
   useEffect(() => {
     const load = async () => {

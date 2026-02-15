@@ -1,8 +1,7 @@
 
-import { useNavigate } from "react-router-dom"
+import type { Role } from './roles'
 
-export function RedirectByRole(role: string) {
-  const navigate = useNavigate()
+export function RedirectByRole(role: Role, navigate: any) {
   switch (role) {
     case 'admin':
       navigate('/admin/dashboard')
