@@ -1,8 +1,8 @@
 import { Loader } from "lucide-react";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 import { ROLES, type Role } from "../lib/roles";
 function MainLayOut() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -11,7 +11,7 @@ function MainLayOut() {
   const user = {
     name: "John Doe",
     avatar: "https://via.placeholder.com/150",
-    role: "support_member" as Role,
+    role: "admin" as Role,
     isLoggedIn: true,
   }
   useEffect(() => {
@@ -20,7 +20,7 @@ function MainLayOut() {
       if (!user.isLoggedIn) {
         await new Promise(resolve => setTimeout(resolve, 1000))
         navigate("/login")
-      }else{
+      } else {
         await new Promise(resolve => setTimeout(resolve, 1000))
         switch (user.role) {
           case ROLES.ADMIN:
@@ -39,7 +39,7 @@ function MainLayOut() {
             navigate("/login")
             break
         }
-       
+
       }
       setLoading(false)
     }
@@ -53,7 +53,7 @@ function MainLayOut() {
   }
   return (
     <div className="flex flex-col justify-center">
-      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} role={user.role} />
       <Sidebar role={user.role} sidebarOpen={sidebarOpen} />
     </div>
   );

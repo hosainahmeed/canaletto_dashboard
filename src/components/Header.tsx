@@ -1,41 +1,26 @@
-"use client"
-
-import { useState } from "react"
-import { motion } from "framer-motion"
 import {
   Bell,
   Menu,
   PanelLeft,
-  Search,
   Wand2,
-  X,
+  X
 } from "lucide-react"
+import { useState } from "react"
+import { Outlet, useNavigate } from "react-router-dom"
 import { cn } from "../lib/utils"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
+import { MENU } from './menu'
+import Sidebar from './Sidebar'
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import { Outlet } from "react-router-dom"
+import { Button } from "./ui/button"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
 
 
-const Header = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSidebarOpen: (open: boolean) => void }) => {
+const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, setSidebarOpen: (open: boolean) => void, role: string }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+  const menuItems = MENU[role as keyof typeof MENU]
+  const navigate = useNavigate()
   return (
     <div className="relative bg-background overflow-hidden">
-      {/* Animated gradient background */}
-      <motion.div
-        className="absolute inset-0 -z-10 opacity-20"
-        animate={{
-          background: [
-            "radial-gradient(circle at 50% 50%, rgba(120, 41, 190, 0.5) 0%, rgba(53, 71, 125, 0.5) 50%, rgba(0, 0, 0, 0) 100%)",
-            "radial-gradient(circle at 30% 70%, rgba(233, 30, 99, 0.5) 0%, rgba(81, 45, 168, 0.5) 50%, rgba(0, 0, 0, 0) 100%)",
-            "radial-gradient(circle at 70% 30%, rgba(76, 175, 80, 0.5) 0%, rgba(32, 119, 188, 0.5) 50%, rgba(0, 0, 0, 0) 100%)",
-            "radial-gradient(circle at 50% 50%, rgba(120, 41, 190, 0.5) 0%, rgba(53, 71, 125, 0.5) 50%, rgba(0, 0, 0, 0) 100%)",
-          ],
-        }}
-        transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-      />
 
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-black/50 md:hidden" onClick={() => setMobileMenuOpen(false)} />
@@ -65,8 +50,23 @@ const Header = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSide
 
           <div className="px-3 py-2">
             <div className="relative">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-              <Input type="search" placeholder="Search..." className="w-full rounded-2xl bg-muted pl-9 pr-4 py-2" />
+              <Sidebar sidebarOpen={mobileMenuOpen} role="admin" />
+              {menuItems?.map((item) => (
+                <div key={item.title} className="mb-1">
+                  <button
+                    className={cn(
+                      "flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium",
+                      location.pathname.includes(item.path) ? "bg-linear-to-br from-[#D4B785] text-white to-[#B08D59]" : "hover:bg-muted",
+                    )}
+                    onClick={() => navigate(item.path)} // onClick={() => toggleExpanded(item.title)}
+                  >
+                    <div className="flex items-center gap-3">
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </div>
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         </div>
