@@ -11,7 +11,7 @@ function MainLayOut() {
   const user = {
     name: "John Doe",
     avatar: "https://via.placeholder.com/150",
-    role: "admin" as Role,
+    role: "content_admin" as Role,
     isLoggedIn: true,
   }
   useEffect(() => {
@@ -27,10 +27,10 @@ function MainLayOut() {
             navigate("/admin/dashboard")
             break
           case ROLES.PROPERTY_ADMIN:
-            navigate("/property-admin/dashboard")
+            navigate("/property-manager/dashboard")
             break
           case ROLES.CONTENT_ADMIN:
-            navigate("/content-admin/dashboard")
+            navigate("/content-manager/dashboard")
             break
           case ROLES.SUPPORT_MEMBER:
             navigate("/support-manager/dashboard")

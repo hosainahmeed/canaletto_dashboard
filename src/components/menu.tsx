@@ -1,7 +1,6 @@
+import { AiContentGenerator02Icon, Analytics02Icon, City01Icon, CourtLawIcon, CustomerSupportIcon, JusticeScale01Icon, PolicyIcon, UserEdit01Icon, UserIcon, UserSettings01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import { ROLES } from "../lib/roles";
-import { AiContentGenerator02Icon, City01Icon, CourtLawIcon, CustomerSupportIcon, JusticeScale01Icon, PolicyIcon, UserEdit01Icon, UserIcon, UserSettings01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { Analytics02Icon } from '@hugeicons/core-free-icons'
 
 export const MENU = {
   [ROLES.ADMIN as keyof typeof ROLES]: [
@@ -70,12 +69,12 @@ export const MENU = {
   ] as const,
 
   [ROLES.CONTENT_ADMIN as keyof typeof ROLES]: [
-    { title: 'Dashboard', icon: <HugeiconsIcon icon={Analytics02Icon} />, path: '/content-admin/dashboard' },
-    { title: 'Markets', icon: <HugeiconsIcon icon={City01Icon} />, path: '/content-admin/markets' },
-    { title: 'Legal', icon: <HugeiconsIcon icon={CourtLawIcon} />, path: '/content-admin/legal' },
-    { title: 'Lifestyles', icon: <HugeiconsIcon icon={AiContentGenerator02Icon} />, path: '/content-admin/lifestyles' },
-    { title: 'Projects', icon: <HugeiconsIcon icon={City01Icon} />, path: '/content-admin/projects' },
-    { title: 'Profile', icon: <HugeiconsIcon icon={UserSettings01Icon} />, path: '/content-admin/profile' },
+    { title: 'Dashboard', icon: <HugeiconsIcon icon={Analytics02Icon} />, path: '/content-manager/dashboard' },
+    { title: 'Markets', icon: <HugeiconsIcon icon={City01Icon} />, path: '/content-manager/manage-markets' },
+    { title: 'Legal', icon: <HugeiconsIcon icon={CourtLawIcon} />, path: '/content-manager/manage-legal' },
+    { title: 'Lifestyles', icon: <HugeiconsIcon icon={AiContentGenerator02Icon} />, path: '/content-manager/manage-lifestyles' },
+    { title: 'Projects', icon: <HugeiconsIcon icon={City01Icon} />, path: '/content-manager/manage-projects' },
+    { title: 'Profile', icon: <HugeiconsIcon icon={UserSettings01Icon} />, path: '/content-manager/manage-profile' },
   ],
 
   [ROLES.SUPPORT_MEMBER as keyof typeof ROLES]: [
