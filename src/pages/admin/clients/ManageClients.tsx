@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import DynamicTable from '../../../components/shared/DynamicTable'
 import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
 import { Button } from '../../../components/ui/button'
@@ -173,7 +174,7 @@ function getData(): Promise<Client[]> {
       status: "Active",
       img: "https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg"
     },
-   
+
   ])
 }
 
@@ -183,6 +184,7 @@ function ManageClients() {
   const [data, setData] = useState<Client[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
+  const navigate = useNavigate()
   console.log(searchQuery)
   useEffect(() => {
     const loadData = async () => {
@@ -203,10 +205,6 @@ function ManageClients() {
     setSearchQuery(e.target.value)
   }
 
-  const renderRouting = () => {
-    alert("Routing to client details page...")
-    console.log("Routing to client details page...")
-  }
 
   if (loading) {
     return (
@@ -218,8 +216,8 @@ function ManageClients() {
     )
   }
 
-  const renderRouting = () => {
-    console.log("sakldjas")
+  const renderRouting = (id: string) => {
+    navigate(`/admin/clients/${id}`)
   }
 
   const renderAction = () => {

@@ -33,6 +33,7 @@ export interface Client {
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
  
@@ -40,6 +41,9 @@ export interface Client {
 =======
 >>>>>>> 90d7d39 (code merge)
 export const columns = (renderRouting: () => void): ColumnDef<Client>[] => [
+=======
+export const columns = (renderRouting: (id: string) => void): ColumnDef<Client>[] => [
+>>>>>>> 09420be (update routing handler)
   {
     accessorKey: "name",
     header: "User Name",
@@ -79,6 +83,7 @@ export const columns = (renderRouting: () => void): ColumnDef<Client>[] => [
     header: "Actions",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     cell: () => (
       <IconWrapper onClick={renderRouting} className='border w-fit p-2 hover:bg-brand/20'>
 =======
@@ -89,6 +94,10 @@ export const columns = (renderRouting: () => void): ColumnDef<Client>[] => [
     cell: () => (
       <IconWrapper onClick={renderRouting} className='border w-fit p-2 hover:bg-brand/20'>
 >>>>>>> 90d7d39 (code merge)
+=======
+    cell: ({ row }: { row: Row<Client> }) => (
+      <IconWrapper onClick={() => renderRouting(row.original.id)} className='border w-fit p-2 hover:bg-brand/20'>
+>>>>>>> 09420be (update routing handler)
         <HugeiconsIcon size={16} icon={UserSettings01Icon} />
       </IconWrapper>
     ),
