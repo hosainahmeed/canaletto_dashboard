@@ -1,9 +1,9 @@
 import { cn } from '../../../lib/utils'
 
 
-function IconWrapper({ children, className }: { children: React.ReactNode, className?: string }) {
+function IconWrapper({ children, className, onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) {
   return (
-    <div className={cn("flex items-center justify-center p-4 rounded-lg cursor-pointer", className)}>
+    <div onClickCapture={onClick} className={cn("flex items-center justify-center p-4 rounded-lg cursor-pointer", className)}>
       {children}
     </div>
   )

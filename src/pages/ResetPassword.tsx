@@ -2,8 +2,6 @@ import { Eye, EyeOff, Loader } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
-import { RedirectByRole } from "../lib/redirects";
-import { setUserInLocalStorage } from "../lib/auth";
 
 interface FormData {
   email: string;
@@ -60,10 +58,10 @@ function ResetPassword() {
     try {
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const user = setUserInLocalStorage(formData.email);
+      // const user = setUserInLocalStorage(formData.email);
 
-      RedirectByRole(user.role, navigate);
-      
+      navigate("/login")
+
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
     } finally {

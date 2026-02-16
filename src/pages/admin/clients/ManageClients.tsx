@@ -211,6 +211,10 @@ function ManageClients() {
     )
   }
 
+  const renderRouting = () => {
+    console.log("sakldjas")
+  }
+
   const renderAction = () => {
     return (
       <div className='flex gap-2'>
@@ -238,7 +242,7 @@ function ManageClients() {
 
   return (
     <PageLayout title="Manage Clients" action={renderAction()}>
-      <PageContent children={<DynamicTable columns={columns} data={data} />} />
+      <PageContent children={<DynamicTable columns={columns(renderRouting)} data={data} />} />
     </PageLayout>
   )
 }

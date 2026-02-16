@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { ROLES, type Role } from "../lib/roles";
 import { getUserFromLocalStorage } from "../lib/auth";
+import { ROLES, type Role } from "../lib/roles";
 
 interface User {
   name: string;
@@ -23,11 +23,11 @@ function MainLayOut() {
   useEffect(() => {
     const load = async () => {
       setLoading(true)
-      
+
       try {
         // Safely get user from localStorage
         const userData = getUserFromLocalStorage()
-        
+
         if (!userData || !userData.isLoggedIn) {
           await new Promise(resolve => setTimeout(resolve, 1000))
           navigate("/login")
@@ -35,7 +35,7 @@ function MainLayOut() {
         }
 
         setUser(userData)
-        
+
         // Navigate to appropriate dashboard based on role
         await new Promise(resolve => setTimeout(resolve, 1000))
         switch (userData.role) {
@@ -57,12 +57,12 @@ function MainLayOut() {
         }
       } catch (error) {
         console.error('Error loading user data:', error)
-        navigate("/login")
+        // navigate("/login")
       } finally {
         setLoading(false)
       }
     }
-    
+
     load()
   }, [navigate])
 

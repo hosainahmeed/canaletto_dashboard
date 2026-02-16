@@ -2,7 +2,6 @@ import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
-import { RedirectByRole } from "../lib/redirects";
 import { setUserInLocalStorage } from "../lib/auth";
 
 interface FormData {
@@ -53,9 +52,10 @@ function ForgotPassword() {
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const user = setUserInLocalStorage(formData.email);
-
-      RedirectByRole(user.role, navigate);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      console.log(user)
+      // RedirectByRole(user.role, navigate);
+      navigate("/forgot-otp")
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
     } finally {
@@ -73,7 +73,7 @@ function ForgotPassword() {
           <p className="text-sm sm:text-base text-[#B0B0B0]">
             Please enter your email to get verification code
           </p>
-         
+
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -95,11 +95,11 @@ function ForgotPassword() {
               {error}
             </div>
           )}
-          
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-linear-to-r from-[#D4B785] to-[#B08D59] text-white font-medium flex items-center justify-center gap-2 disabled:opacity-70 mt-6" 
+            className="w-full py-3 rounded-xl bg-linear-to-r from-[#D4B785] to-[#B08D59] text-white font-medium flex items-center justify-center gap-2 disabled:opacity-70 mt-6"
           >
             {loading ? (
               <>
