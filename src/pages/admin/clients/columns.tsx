@@ -1,26 +1,10 @@
 import { UserSettings01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-<<<<<<< HEAD
-<<<<<<< HEAD
 import type { ColumnDef, Row } from '@tanstack/react-table'
-import TableUserInfo from '../../../components/shared/TableUserInfo'
 import IconWrapper from '../../../components/shared/cards/IconWrapper'
+import TableUserInfo from '../../../components/shared/TableUserInfo'
 import { cn } from '../../../lib/utils'
 
-=======
-import { cn } from '../../../lib/utils'
-import TableUserInfo from '../../../components/shared/TableUserInfo'
-import IconWrapper from '../../../components/shared/cards/IconWrapper'
-import type { ColumnDef, Row } from '@tanstack/react-table'
- 
->>>>>>> 5577a2c (user render routing)
-=======
-import type { ColumnDef, Row } from '@tanstack/react-table'
-import TableUserInfo from '../../../components/shared/TableUserInfo'
-import IconWrapper from '../../../components/shared/cards/IconWrapper'
-import { cn } from '../../../lib/utils'
-
->>>>>>> 90d7d39 (code merge)
 export interface Client {
   id: string
   name: string
@@ -31,19 +15,7 @@ export interface Client {
   status: "Active" | "Blocked"
   img: string
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> 5577a2c (user render routing)
-=======
->>>>>>> 90d7d39 (code merge)
-export const columns = (renderRouting: () => void): ColumnDef<Client>[] => [
-=======
 export const columns = (renderRouting: (id: string) => void): ColumnDef<Client>[] => [
->>>>>>> 09420be (update routing handler)
   {
     accessorKey: "name",
     header: "User Name",
@@ -81,25 +53,11 @@ export const columns = (renderRouting: (id: string) => void): ColumnDef<Client>[
   {
     accessorKey: "actions",
     header: "Actions",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    cell: () => (
-      <IconWrapper onClick={renderRouting} className='border w-fit p-2 hover:bg-brand/20'>
-=======
-    cell: ({ row }: { row: Row<Client> }) => (
-      <IconWrapper onClick={() => renderRouting()} className='border w-fit p-2 hover:bg-brand/20'>
->>>>>>> 5577a2c (user render routing)
-=======
-    cell: () => (
-      <IconWrapper onClick={renderRouting} className='border w-fit p-2 hover:bg-brand/20'>
->>>>>>> 90d7d39 (code merge)
-=======
     cell: ({ row }: { row: Row<Client> }) => (
       <IconWrapper onClick={() => renderRouting(row.original.id)} className='border w-fit p-2 hover:bg-brand/20'>
->>>>>>> 09420be (update routing handler)
         <HugeiconsIcon size={16} icon={UserSettings01Icon} />
       </IconWrapper>
     ),
   },
 ]
+
