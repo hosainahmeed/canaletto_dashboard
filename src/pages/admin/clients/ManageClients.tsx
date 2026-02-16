@@ -9,8 +9,10 @@ import { Field } from '../../../components/ui/field'
 import { Input } from '../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../components/ui/select'
 import { columns, type Client } from './columns'
+import { useNavigate } from 'react-router-dom'
 
 function getData(): Promise<Client[]> {
+ 
 
   return Promise.resolve([
     {
@@ -180,6 +182,7 @@ function getData(): Promise<Client[]> {
 
 
 function ManageClients() {
+   const navigate = useNavigate()
   const [data, setData] = useState<Client[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
@@ -203,9 +206,8 @@ function ManageClients() {
     setSearchQuery(e.target.value)
   }
 
-  const renderRouting = () => {
-    alert("Routing to client details page...")
-    console.log("Routing to client details page...")
+ const renderRouting = (id: string) => {
+    navigate(`/admin/clients/${id}`)
   }
 
   if (loading) {
@@ -217,6 +219,8 @@ function ManageClients() {
       </PageLayout>
     )
   }
+
+  
 
   const renderAction = () => {
     return (

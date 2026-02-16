@@ -1,9 +1,9 @@
 import { UserSettings01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { cn } from '../../../lib/utils'
+import type { ColumnDef, Row } from '@tanstack/react-table'
 import TableUserInfo from '../../../components/shared/TableUserInfo'
 import IconWrapper from '../../../components/shared/cards/IconWrapper'
-import type { ColumnDef, Row } from '@tanstack/react-table'
+import { cn } from '../../../lib/utils'
  
 export interface Client {
   id: string
@@ -15,8 +15,7 @@ export interface Client {
   status: "Active" | "Blocked"
   img: string
 }
- 
-export const columns = (renderRouting: () => void): ColumnDef<Client>[] => [
+export const columns = (renderRouting: (id: string) => void): ColumnDef<Client>[] => [
   {
     accessorKey: "name",
     header: "User Name",
@@ -55,7 +54,7 @@ export const columns = (renderRouting: () => void): ColumnDef<Client>[] => [
     accessorKey: "actions",
     header: "Actions",
     cell: ({ row }: { row: Row<Client> }) => (
-      <IconWrapper onClick={() => renderRouting()} className='border w-fit p-2 hover:bg-brand/20'>
+      <IconWrapper onClick={() => renderRouting(row.original.id)} className='border w-fit p-2 hover:bg-brand/20'>
         <HugeiconsIcon size={16} icon={UserSettings01Icon} />
       </IconWrapper>
     ),

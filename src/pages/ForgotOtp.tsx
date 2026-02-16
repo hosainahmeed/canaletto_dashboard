@@ -1,8 +1,6 @@
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { RedirectByRole } from "../lib/redirects";
-import { setUserInLocalStorage } from "../lib/auth";
 import { Input } from "../components/ui/input";
 
 function ForgotPassword() {
@@ -62,8 +60,8 @@ function ForgotPassword() {
     try {
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const user = setUserInLocalStorage(email);
-      RedirectByRole(user.role, navigate);
+      // const user = setUserInLocalStorage(email);
+      navigate("/reset-password");
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
     } finally {
