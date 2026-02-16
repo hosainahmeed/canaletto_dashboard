@@ -173,9 +173,11 @@ function getData(): Promise<Client[]> {
       status: "Active",
       img: "https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg"
     },
-    // ...
+   
   ])
 }
+
+
 
 function ManageClients() {
   const [data, setData] = useState<Client[]>([])
@@ -199,6 +201,11 @@ function ManageClients() {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value)
+  }
+
+  const renderRouting = () => {
+    alert("Routing to client details page...")
+    console.log("Routing to client details page...")
   }
 
   if (loading) {
@@ -238,7 +245,7 @@ function ManageClients() {
 
   return (
     <PageLayout title="Manage Clients" action={renderAction()}>
-      <PageContent children={<DynamicTable columns={columns} data={data} />} />
+      <PageContent children={<DynamicTable columns={columns(renderRouting)} data={data} />} />
     </PageLayout>
   )
 }
