@@ -1,7 +1,12 @@
+import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
 
 const ClientDetails = () => {
   return (
-    <div>ClientDetails</div>
+    <PageLayout title='Client details '>
+      <PageContent>
+        <h1>asjkhd</h1>
+      </PageContent>
+    </PageLayout>
   )
 }
 
