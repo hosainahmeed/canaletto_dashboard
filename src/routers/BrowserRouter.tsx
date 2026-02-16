@@ -7,6 +7,7 @@ import { ContentManagerRoutes } from "./ContentManagerRoutes";
 import MainLayOut from "./MainLayOut";
 import { PropertiesManagerRoutes } from "./PropertiesManagerRoutes copy";
 import { SupportManagerRoutes } from "./SupportManagerRoutes";
+import ForgotOtp from "../pages/ForgotOtp";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/forgot-password",
     element: <ForgotPassword />
+  },
+  {
+    path: "/forgot-otp",
+    element: <ForgotOtp />
   },
   {
     path: "/reset-password",
