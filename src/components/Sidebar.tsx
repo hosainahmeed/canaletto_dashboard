@@ -1,13 +1,11 @@
-import { SidebarLeft01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/react'
 import { LogOut } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import logo from "../assets/brand-logo.svg"
 import { cn } from '../lib/utils'
 import { MENU } from './menu'
 import { ScrollArea } from './ui/scroll-area'
-
-function Sidebar({ sidebarOpen, role }: { sidebarOpen: boolean, role: string }) {
-  const menuItems = MENU[role as keyof typeof MENU]
+function Sidebar({ sidebarOpen, role }: { sidebarOpen: boolean, role: keyof typeof MENU }) {
+  const menuItems = MENU[role]
   const location = useLocation()
   const navigate = useNavigate()
   //   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
@@ -29,12 +27,8 @@ function Sidebar({ sidebarOpen, role }: { sidebarOpen: boolean, role: string }) 
       <div className="flex h-full flex-col">
         <div className="p-4">
           <div className="flex items-center gap-3">
-            <div className="flex aspect-square size-10 items-center justify-center rounded-2xl bg-linear-gradient-to-br from-[#D4B785] to-blue-600 text-white">
-              <HugeiconsIcon icon={SidebarLeft01Icon} />
-            </div>
-            <div>
-              <h2 className="font-semibold">Designali</h2>
-              <p className="text-xs text-muted-foreground">Creative Suite</p>
+            <div className='w-full h-12 flex items-center justify-center'>
+              <img src={logo} alt="Logo" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>

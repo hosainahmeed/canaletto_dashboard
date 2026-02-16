@@ -10,6 +10,7 @@ import { Field } from '../../../components/ui/field'
 import { Input } from '../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../components/ui/select'
 import { columns, type Client } from './columns'
+import { Loader } from 'lucide-react'
 
 function getData(): Promise<Client[]> {
 
@@ -210,7 +211,7 @@ function ManageClients() {
     return (
       <PageLayout title="Manage Clients" action={<button className="btn btn-primary">Add Client</button>}>
         <PageContent>
-          <div>Loading...</div>
+          <Loader className='animate-spin' />
         </PageContent>
       </PageLayout>
     )

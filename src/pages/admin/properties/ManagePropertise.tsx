@@ -1,5 +1,6 @@
 'use client'
 
+import { Loader } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import DynamicTable from '../../../components/shared/DynamicTable'
 import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
@@ -115,7 +116,7 @@ function ManagePropertise() {
     return (
       <PageLayout title="Manage Clients" action={<button className="btn btn-primary">Add Client</button>}>
         <PageContent>
-          <div>Loading...</div>
+          <Loader className='animate-spin' />
         </PageContent>
       </PageLayout>
     )
