@@ -1,10 +1,18 @@
 import { UserSettings01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
+<<<<<<< HEAD
 import type { ColumnDef, Row } from '@tanstack/react-table'
 import TableUserInfo from '../../../components/shared/TableUserInfo'
 import IconWrapper from '../../../components/shared/cards/IconWrapper'
 import { cn } from '../../../lib/utils'
 
+=======
+import { cn } from '../../../lib/utils'
+import TableUserInfo from '../../../components/shared/TableUserInfo'
+import IconWrapper from '../../../components/shared/cards/IconWrapper'
+import type { ColumnDef, Row } from '@tanstack/react-table'
+ 
+>>>>>>> 5577a2c (user render routing)
 export interface Client {
   id: string
   name: string
@@ -15,7 +23,11 @@ export interface Client {
   status: "Active" | "Blocked"
   img: string
 }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 5577a2c (user render routing)
 export const columns = (renderRouting: () => void): ColumnDef<Client>[] => [
   {
     accessorKey: "name",
@@ -54,8 +66,13 @@ export const columns = (renderRouting: () => void): ColumnDef<Client>[] => [
   {
     accessorKey: "actions",
     header: "Actions",
+<<<<<<< HEAD
     cell: () => (
       <IconWrapper onClick={renderRouting} className='border w-fit p-2 hover:bg-brand/20'>
+=======
+    cell: ({ row }: { row: Row<Client> }) => (
+      <IconWrapper onClick={() => renderRouting()} className='border w-fit p-2 hover:bg-brand/20'>
+>>>>>>> 5577a2c (user render routing)
         <HugeiconsIcon size={16} icon={UserSettings01Icon} />
       </IconWrapper>
     ),

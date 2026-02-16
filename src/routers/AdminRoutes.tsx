@@ -1,4 +1,5 @@
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import ClientDetails from '../pages/admin/clients/ClientDetails';
 import ManageClients from '../pages/admin/clients/ManageClients';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
@@ -12,6 +13,10 @@ export const adminRoutes = {
     {
       path: "/admin/clients",
       element: <ManageClients />
+    },
+    {
+      path: "/admin/clients/:id",
+      element: <ClientDetails />
     },
     {
       path: "/admin/properties",
