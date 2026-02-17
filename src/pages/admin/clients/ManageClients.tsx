@@ -1,5 +1,6 @@
 'use client'
 
+import { Loader } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import DynamicTable from '../../../components/shared/DynamicTable'
@@ -9,10 +10,9 @@ import { ButtonGroup } from '../../../components/ui/button-group'
 import { Field } from '../../../components/ui/field'
 import { Input } from '../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../components/ui/select'
-import { columns, type Client } from './columns'
-import { Loader } from 'lucide-react'
+import { clientColumns, type Client } from './clientColumns'
 
-function getData(): Promise<Client[]> {
+export function getData(): Promise<Client[]> {
 
   return Promise.resolve([
     {
@@ -248,7 +248,7 @@ function ManageClients() {
 
   return (
     <PageLayout title="Manage Clients" action={renderAction()}>
-      <PageContent children={<DynamicTable columns={columns(renderRouting)} data={data} />} />
+      <PageContent children={<DynamicTable columns={clientColumns(renderRouting)} data={data} />} />
     </PageLayout>
   )
 }

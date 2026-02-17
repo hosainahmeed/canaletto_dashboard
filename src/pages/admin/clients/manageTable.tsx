@@ -22,7 +22,7 @@ interface DataTableProps<TData, TValue> {
   className?: string
 }
 
-export function DataTable<TData, TValue>({
+export function ManageClientTable<TData, TValue>({
   columns,
   data,
   className,

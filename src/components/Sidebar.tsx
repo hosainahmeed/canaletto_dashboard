@@ -1,6 +1,6 @@
 import { LogOut } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import logo from "../assets/brand-logo.svg"
+import { IMAGE } from '../constant/image.index'
 import { cn } from '../lib/utils'
 import { MENU } from './menu'
 import { ScrollArea } from './ui/scroll-area'
@@ -28,7 +28,7 @@ function Sidebar({ sidebarOpen, role }: { sidebarOpen: boolean, role: keyof type
         <div className="p-4">
           <div className="flex items-center gap-3">
             <div className='w-full h-12 flex items-center justify-center'>
-              <img src={logo} alt="Logo" className="h-full w-full object-cover" />
+              <img src={IMAGE.brandLogo} alt="Logo" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>

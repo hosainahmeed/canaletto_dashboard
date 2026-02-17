@@ -15,13 +15,13 @@ export interface Client {
   status: "Active" | "Blocked"
   img: string
 }
-export const columns = (renderRouting: (id: string) => void): ColumnDef<Client>[] => [
+export const clientColumns = (renderRouting: (id: string) => void): ColumnDef<Client>[] => [
   {
     accessorKey: "name",
     header: "User Name",
     cell: ({ row }: { row: Row<Client> }) => (
       <div className="font-medium">
-        <TableUserInfo name={row.getValue("name")} img={row.original.img} />
+        <TableUserInfo name={row?.getValue("name")} img={row?.original?.img} />
       </div>
     ),
   },
@@ -45,8 +45,8 @@ export const columns = (renderRouting: (id: string) => void): ColumnDef<Client>[
     accessorKey: "status",
     header: "Status",
     cell: ({ row }: { row: Row<Client> }) => (
-      <div className={cn("font-normal", row.getValue("status") === "Active" ? "text-green-500" : "text-red-500")}>
-        {row.getValue("status")}
+      <div className={cn("font-normal", row?.getValue("status") === "Active" ? "text-green-500" : "text-red-500")}>
+        {row?.getValue("status")}
       </div>
     ),
   },
@@ -54,7 +54,7 @@ export const columns = (renderRouting: (id: string) => void): ColumnDef<Client>[
     accessorKey: "actions",
     header: "Actions",
     cell: ({ row }: { row: Row<Client> }) => (
-      <IconWrapper onClick={() => renderRouting(row.original.id)} className='border w-fit p-2 hover:bg-brand/20'>
+      <IconWrapper onClick={() => renderRouting(row?.original?.id)} className='border w-fit p-2 hover:bg-brand/20'>
         <HugeiconsIcon size={16} icon={UserSettings01Icon} />
       </IconWrapper>
     ),
