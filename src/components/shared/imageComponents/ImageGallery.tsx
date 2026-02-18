@@ -2,7 +2,7 @@ import React from "react";
 
 interface ImageGalleryProps {
   topImage: string;
-  bottomImages: string[]; 
+  bottomImages: string[];
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ topImage, bottomImages }) => {
@@ -16,7 +16,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ topImage, bottomImages }) =
       <img
         src={topImage}
         alt="Top"
-        className="w-[300px] h-[200px] object-cover rounded-lg"
+        className="w-75 h-50 object-cover rounded-lg"
       />
 
       {/* Bottom Row of 4 Images */}

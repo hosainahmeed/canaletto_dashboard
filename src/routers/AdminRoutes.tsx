@@ -8,7 +8,11 @@ import UpdateCompanyInfo from '../pages/admin/documents/UpdateCompanyInfo';
 import AdminProfile from '../pages/admin/manage-profile/AdminProfile';
 import ChangePassword from '../pages/admin/manage-profile/ChangePassword';
 import UpdateProfile from '../pages/admin/manage-profile/UpdateProfile';
+import AssignedManager from '../pages/admin/properties/details/AssignedManager';
+import ConstructionProgress from '../pages/admin/properties/details/ConstructionProgress';
+import PaymentInvoices from '../pages/admin/properties/details/PaymentInvoices';
 import PropertyDetails from '../pages/admin/properties/details/PropertyDetails';
+import PropertyFiles from '../pages/admin/properties/details/PropertyFiles';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
 
@@ -77,6 +81,22 @@ export const adminRoutes = {
     {
       path: "/admin/profile/change-password",
       element: <ChangePassword />
+    },
+    {
+      path: "/admin/properties/files",
+      element: <PropertyFiles />
+    },
+    {
+      path: "/admin/properties/invoices",
+      element: <PaymentInvoices />
+    },
+    {
+      path: "/admin/properties/progress",
+      element: <ConstructionProgress />
+    },
+    {
+      path: "/admin/properties/manager",
+      element: <AssignedManager />
     }
   ],
 };
