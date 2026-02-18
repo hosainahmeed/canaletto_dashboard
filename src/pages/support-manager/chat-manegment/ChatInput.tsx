@@ -14,7 +14,7 @@ export const ChatInput = ({ value, onChange, onSend }: ChatInputProps) => {
         <input
           type="text"
           placeholder="Enter message..."
-          className="w-full py-3 px-6 bg-white border border-zinc-200 rounded-full text-sm outline-none focus:border-[#D4B98E] transition-all shadow-sm"
+          className="w-full py-3 px-6 bg-white border border-zinc-200 rounded-md text-sm outline-none focus:border-[#D4B98E] transition-all"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && onSend()}

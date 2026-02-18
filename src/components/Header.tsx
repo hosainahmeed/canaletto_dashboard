@@ -50,7 +50,7 @@ const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, s
 
           <div className="px-3 py-2">
             <div className="relative">
-              <Sidebar sidebarOpen={mobileMenuOpen} role="support_member" />
+              <Sidebar sidebarOpen={mobileMenuOpen} role="content_admin" />
               {menuItems?.map((item) => (
                 <div key={item.title} className="mb-1">
                   <button

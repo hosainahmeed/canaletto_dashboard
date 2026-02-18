@@ -1,10 +1,14 @@
+import ChangePassword from "../pages/admin/manage-profile/ChangePassword";
+import UpdateProfile from "../pages/admin/manage-profile/UpdateProfile";
 import Chat from "../pages/support-manager/chat-manegment/Chat";
+import SupportManagerProfile from "../pages/support-manager/support-manager-profile/SupportManagerProfile";
+import SupportManagerDashboard from "../pages/support-manager/SupportManagerDashboard";
 
 export const SupportManagerRoutes = {
     children: [
         {
             path: "/support-manager/dashboard",
-            element: <h1>Dashboard</h1>
+            element: <SupportManagerDashboard />,
         },
         {
             path: "/support-manager/chat",
@@ -12,7 +16,15 @@ export const SupportManagerRoutes = {
         },
         {
             path: "/support-manager/profile",
-            element: <h1>Manage Profile</h1>
+            element: <SupportManagerProfile />
         },
+        {
+            path: "/support-manager/profile/change-password",
+            element: <ChangePassword />
+        },
+        {
+            path: "/support-manager/profile/update-profile",
+            element: <UpdateProfile />
+        }
     ],
 };

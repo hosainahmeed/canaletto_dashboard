@@ -24,7 +24,7 @@ function ChatFormalCard({ children, name, avater, status, bodyStyle, headerStyle
                         </button>
 
                         {avater && (
-                            <div className="w-12 h-12 bg-[#DDDDDD] border border-muted-foreground/10 rounded-xl overflow-hidden shadow-sm">
+                            <div className="w-12 h-12 bg-[#DDDDDD] border border-muted-foreground/10 rounded-xl overflow-hidden">
                                 <img src={avater} alt={name} className="w-full h-full object-cover" />
                             </div>
                         )}
