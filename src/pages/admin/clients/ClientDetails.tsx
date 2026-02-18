@@ -100,7 +100,7 @@ const ClientDetails = () => {
         <div className="w-32 h-32 mb-4">
           <img src={clientDetails.profileImage} alt="Profile" className='w-full h-full rounded-md' />
         </div>
-        <FormalCard header="Assigned Properties">
+        <FormalCard header="Personal Information">
           <div className="responsive-grid-2">
             <div className="">
               <h1 className='text-[#B0B0B0] font-nunito-semibold-italic'>Full Name</h1>

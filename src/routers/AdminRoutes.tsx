@@ -1,6 +1,10 @@
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import ClientDetails from '../pages/admin/clients/ClientDetails';
 import ManageClients from '../pages/admin/clients/ManageClients';
+import LegalCompanyInfo from '../pages/admin/documents/LegalCompanyInfo';
+import PrivacyPolicy from '../pages/admin/documents/PrivacyPolicy';
+import Terms from '../pages/admin/documents/Terms';
+import UpdateCompanyInfo from '../pages/admin/documents/UpdateCompanyInfo';
 import PropertyDetails from '../pages/admin/properties/details/PropertyDetails';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
@@ -45,15 +49,19 @@ export const adminRoutes = {
     },
     {
       path: "/admin/terms-and-conditions",
-      element: <h1>Terms & Conditions</h1>
+      element: <Terms />
     },
     {
       path: "/admin/privacy-policy",
-      element: <h1>Privacy Policy</h1>
+      element: <PrivacyPolicy />
     },
     {
       path: "/admin/legal",
-      element: <h1>Legal & Company Info</h1>
+      element: <LegalCompanyInfo />
+    },
+    {
+      path: "/admin/legal-company-info/edit",
+      element: <UpdateCompanyInfo />
     },
     {
       path: "/admin/profile",
