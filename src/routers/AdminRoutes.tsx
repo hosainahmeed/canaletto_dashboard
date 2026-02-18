@@ -5,6 +5,9 @@ import LegalCompanyInfo from '../pages/admin/documents/LegalCompanyInfo';
 import PrivacyPolicy from '../pages/admin/documents/PrivacyPolicy';
 import Terms from '../pages/admin/documents/Terms';
 import UpdateCompanyInfo from '../pages/admin/documents/UpdateCompanyInfo';
+import AdminProfile from '../pages/admin/manage-profile/AdminProfile';
+import ChangePassword from '../pages/admin/manage-profile/ChangePassword';
+import UpdateProfile from '../pages/admin/manage-profile/UpdateProfile';
 import PropertyDetails from '../pages/admin/properties/details/PropertyDetails';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
@@ -65,7 +68,15 @@ export const adminRoutes = {
     },
     {
       path: "/admin/profile",
-      element: <h1>Manage Profile</h1>
+      element: <AdminProfile />
     },
+    {
+      path: "/admin/profile/update",
+      element: <UpdateProfile />
+    },
+    {
+      path: "/admin/profile/change-password",
+      element: <ChangePassword />
+    }
   ],
 };
