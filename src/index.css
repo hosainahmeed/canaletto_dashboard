@@ -1,10 +1,12 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
+@import './assets/font/Nunito/font-face.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-sans: 'Nunito', system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -132,6 +134,12 @@
 
 .responsive-grid-4 {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5;
+}
+
+.font-nunito-semibold-italic {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-weight: 600;
+  font-style: italic;
 }
 
 .responsive-grid-3 {

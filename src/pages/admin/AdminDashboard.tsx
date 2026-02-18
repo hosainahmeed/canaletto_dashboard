@@ -1,14 +1,18 @@
 import { AiContentGenerator02Icon, Analytics02Icon, City01Icon, UserIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { useMemo } from 'react'
-import FormalCard from '../../components/shared/cards/FormalCard'
-import StatusCard from '../../components/shared/cards/StatusCard'
+import { Loader } from 'lucide-react'
+import { lazy, Suspense } from 'react'
+import { useNavigate } from 'react-router-dom'
+import ComponentTitle from '../../components/shared/ComponentTitle'
+import DynamicTable from '../../components/shared/DynamicTable'
 import { PageLayout } from '../../components/shared/PageLayout'
-import Space from '../../components/shared/Space'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select'
+import { clientColumns } from './clients/clientColumns'
 
+const StatusCard = lazy(() => import('../../components/shared/cards/StatusCard'));
+const Activities = lazy(() => import('../../components/admin-components/Activities'));
 
 function AdminDashboard() {
+  const navigate = useNavigate()
   const statusData = [
     {
       title: "Total Clients",
@@ -32,45 +36,52 @@ function AdminDashboard() {
     }
   ]
 
-  const renderHeader = useMemo(() => {
-    return (
-      <div className='flex justify-between items-center'>
-        <h1>Showing activities for Today</h1>
-        <Select>
-          <SelectTrigger className="w-48">
-            <SelectValue placeholder="Today" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="last_24_hours">Last 24 Hours</SelectItem>
-              <SelectItem value="last_week">Last Week</SelectItem>
-              <SelectItem value="last_fortnight">Last Fortnight</SelectItem>
-              <SelectItem value="last_month">Last Month</SelectItem>
-              <SelectItem value="last_year">Last Year</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-    )
-  }, [])
+
 
   return (
-    <PageLayout title="Admin Dashboard" icon={<HugeiconsIcon icon={Analytics02Icon} />}>
-      <div className='responsive-grid-4'>
-        {statusData.map((item, index) => (
-          <StatusCard key={index} title={item.title} value={item.value} icon={item.icon} />
-        ))}
-      </div>
-      <Space  size={4}/>
-      <FormalCard header={
-        renderHeader
-      }>
-        <div>
-          <h1>hosain</h1>
+    <Suspense fallback={<Loader className='animate-spin' />}>
+      <PageLayout title="Admin Dashboard" icon={<HugeiconsIcon icon={Analytics02Icon} />}>
+        <div className="flex flex-col gap-4">
+          <div className='responsive-grid-4'>
+            {statusData.map((item, index) => (
+              <StatusCard key={index} title={item.title} value={item.value} icon={item.icon} />
+            ))}
+          </div>
+          <Activities />
+          <ComponentTitle title="Recently added clients" buttonLabel="View All" onButtonClick={() => navigate('/admin/clients')} />
+          <DynamicTable columns={clientColumns((id) => navigate(`/admin/clients/${id}`))} data={[{
+            id: "728ed52f",
+            name: "Anthony Clark",
+            email: "tanim.cse@gmail.com",
+            phone: "+1 919-555-0284",
+            assignedProperty: "Canaletto Sky World",
+            joinedOn: "Jul 10, 2025",
+            status: "Active",
+            img: "https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg"
+          },
+          {
+            id: "e24433341299jh",
+            name: "David Kim",
+            email: "rafiul.dev@gmail.com",
+            phone: "+1 213-555-0890",
+            assignedProperty: "Canaletto Sky World",
+            joinedOn: "Jul 10, 2025",
+            status: "Active",
+            img: "https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg"
+          },
+          {
+            id: "e2e2e2e255",
+            name: "Sophia White",
+            email: "kamrul.tech@gmail.com",
+            phone: "+1 206-555-0734",
+            assignedProperty: "—",
+            joinedOn: "Jul 10, 2025",
+            status: "Active",
+            img: "https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg"
+          }]} />
         </div>
-      </FormalCard>
-    </PageLayout>
+      </PageLayout>
+    </Suspense>
   )
 }
 

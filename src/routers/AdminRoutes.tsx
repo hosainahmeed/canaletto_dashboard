@@ -1,6 +1,18 @@
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import ClientDetails from '../pages/admin/clients/ClientDetails';
 import ManageClients from '../pages/admin/clients/ManageClients';
+import LegalCompanyInfo from '../pages/admin/documents/LegalCompanyInfo';
+import PrivacyPolicy from '../pages/admin/documents/PrivacyPolicy';
+import Terms from '../pages/admin/documents/Terms';
+import UpdateCompanyInfo from '../pages/admin/documents/UpdateCompanyInfo';
+import AdminProfile from '../pages/admin/manage-profile/AdminProfile';
+import ChangePassword from '../pages/admin/manage-profile/ChangePassword';
+import UpdateProfile from '../pages/admin/manage-profile/UpdateProfile';
+import AssignedManager from '../pages/admin/properties/details/AssignedManager';
+import ConstructionProgress from '../pages/admin/properties/details/ConstructionProgress';
+import PaymentInvoices from '../pages/admin/properties/details/PaymentInvoices';
+import PropertyDetails from '../pages/admin/properties/details/PropertyDetails';
+import PropertyFiles from '../pages/admin/properties/details/PropertyFiles';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
 
@@ -23,8 +35,12 @@ export const adminRoutes = {
       element: <ManagePropertise />
     },
     {
+      path: "/admin/properties/:id",
+      element: <PropertyDetails />
+    },
+    {
       path: "/admin/property-manager",
-      element: <PropertyManager/>
+      element: <PropertyManager />
     },
     {
       path: "/admin/content-management",
@@ -40,19 +56,47 @@ export const adminRoutes = {
     },
     {
       path: "/admin/terms-and-conditions",
-      element: <h1>Terms & Conditions</h1>
+      element: <Terms />
     },
     {
       path: "/admin/privacy-policy",
-      element: <h1>Privacy Policy</h1>
+      element: <PrivacyPolicy />
     },
     {
       path: "/admin/legal",
-      element: <h1>Legal & Company Info</h1>
+      element: <LegalCompanyInfo />
+    },
+    {
+      path: "/admin/legal-company-info/edit",
+      element: <UpdateCompanyInfo />
     },
     {
       path: "/admin/profile",
-      element: <h1>Manage Profile</h1>
+      element: <AdminProfile />
     },
+    {
+      path: "/admin/profile/update",
+      element: <UpdateProfile />
+    },
+    {
+      path: "/admin/profile/change-password",
+      element: <ChangePassword />
+    },
+    {
+      path: "/admin/properties/files",
+      element: <PropertyFiles />
+    },
+    {
+      path: "/admin/properties/invoices",
+      element: <PaymentInvoices />
+    },
+    {
+      path: "/admin/properties/progress",
+      element: <ConstructionProgress />
+    },
+    {
+      path: "/admin/properties/manager",
+      element: <AssignedManager />
+    }
   ],
 };

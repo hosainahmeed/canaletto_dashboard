@@ -1,10 +1,10 @@
 import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { useState } from 'react'
-import { DataTable } from '../../pages/admin/clients/manageTable'
+import { ManageTable } from '../../pages/admin/clients/ManageTable'
 import { Button } from '../ui/button'
 
-function DynamicTable({ columns, data }: { columns: any, data: any }) {
+function DynamicTable({ columns, data, header = true }: { columns: any, data: any, header?: boolean }) {
   const [currentPage, setCurrentPage] = useState(0)
   const pageSize = 5
   const pageCount = Math.ceil(data.length / pageSize)
@@ -38,8 +38,8 @@ function DynamicTable({ columns, data }: { columns: any, data: any }) {
   }
 
   return (
-    <>
-      <DataTable className='rounded-bl-none rounded-br-none' columns={columns} data={currentData} />
+    <div>
+      <ManageTable header={header} className='rounded-bl-none rounded-br-none' columns={columns} data={currentData} />
       <div className="flex items-center justify-center bg-brand/20 rounded-bl-2xl rounded-br-2xl px-4 py-3">
         <div className="flex items-center space-x-2">
           <Button
@@ -84,7 +84,7 @@ function DynamicTable({ columns, data }: { columns: any, data: any }) {
           </Button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -1,6 +1,8 @@
 'use client'
 
+import { Loader } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import DynamicTable from '../../../components/shared/DynamicTable'
 import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
 import { Button } from '../../../components/ui/button'
@@ -8,11 +10,9 @@ import { ButtonGroup } from '../../../components/ui/button-group'
 import { Field } from '../../../components/ui/field'
 import { Input } from '../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../components/ui/select'
-import { columns, type Client } from './columns'
-import { useNavigate } from 'react-router-dom'
+import { clientColumns, type Client } from './clientColumns'
 
-function getData(): Promise<Client[]> {
- 
+export function getData(): Promise<Client[]> {
 
   return Promise.resolve([
     {
@@ -175,7 +175,6 @@ function getData(): Promise<Client[]> {
       status: "Active",
       img: "https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg"
     },
-   
   ])
 }
 
@@ -186,6 +185,7 @@ function ManageClients() {
   const [data, setData] = useState<Client[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
+ 
   console.log(searchQuery)
   useEffect(() => {
     const loadData = async () => {
@@ -206,21 +206,20 @@ function ManageClients() {
     setSearchQuery(e.target.value)
   }
 
- const renderRouting = (id: string) => {
-    navigate(`/admin/clients/${id}`)
-  }
 
   if (loading) {
     return (
       <PageLayout title="Manage Clients" action={<button className="btn btn-primary">Add Client</button>}>
         <PageContent>
-          <div>Loading...</div>
+          <Loader className='animate-spin' />
         </PageContent>
       </PageLayout>
     )
   }
 
-  
+  const renderRouting = (id: string) => {
+    navigate(`/admin/clients/${id}`)
+  }
 
   const renderAction = () => {
     return (
@@ -249,7 +248,7 @@ function ManageClients() {
 
   return (
     <PageLayout title="Manage Clients" action={renderAction()}>
-      <PageContent children={<DynamicTable columns={columns(renderRouting)} data={data} />} />
+      <PageContent children={<DynamicTable columns={clientColumns(renderRouting)} data={data} />} />
     </PageLayout>
   )
 }

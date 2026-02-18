@@ -20,12 +20,14 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   className?: string
+  header?: boolean
 }
 
-export function DataTable<TData, TValue>({
+export function ManageTable<TData, TValue>({
   columns,
   data,
   className,
+  header = true
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -36,7 +38,7 @@ export function DataTable<TData, TValue>({
   return (
     <div className={cn("overflow-hidden rounded-md border", className)}>
       <Table>
-        <TableHeader className='bg-brand/20'>
+        {header && <TableHeader className='bg-brand/20'>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup?.id}>
               {headerGroup.headers.map((header) => {
@@ -53,7 +55,7 @@ export function DataTable<TData, TValue>({
               })}
             </TableRow>
           ))}
-        </TableHeader>
+        </TableHeader>}
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
