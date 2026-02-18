@@ -1,6 +1,7 @@
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import ClientDetails from '../pages/admin/clients/ClientDetails';
 import ManageClients from '../pages/admin/clients/ManageClients';
+import PropertyDetails from '../pages/admin/properties/details/PropertyDetails';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
 
@@ -23,8 +24,12 @@ export const adminRoutes = {
       element: <ManagePropertise />
     },
     {
+      path: "/admin/properties/:id",
+      element: <PropertyDetails />
+    },
+    {
       path: "/admin/property-manager",
-      element: <PropertyManager/>
+      element: <PropertyManager />
     },
     {
       path: "/admin/content-management",

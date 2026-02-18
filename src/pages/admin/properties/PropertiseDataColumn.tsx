@@ -5,17 +5,25 @@ import IconWrapper from '../../../components/shared/cards/IconWrapper'
 
 export type Propertise = {
   id: string
+  propertyImage: string
   name: string
   type: string
   status: "Active" | "Under Construction",
   progress: string
 }
 
-export const PropertiseDataColumn: ColumnDef<Propertise>[] = [
+export const PropertiseDataColumn = (onClick?: (id: string) => void): ColumnDef<Propertise>[] => [
   {
     id: 'name',
     header: 'Property Name',
-    cell: ({ row }) => row.original.name,
+    cell: ({ row }) => {
+      return (
+        <div className='flex items-center gap-2'>
+          <img src={row.original.propertyImage} alt={row.original.name} className='w-10 h-10 rounded object-cover' />
+          <span>{row.original.name}</span>
+        </div>
+      )
+    },
   },
   {
     id: 'type',
@@ -35,8 +43,8 @@ export const PropertiseDataColumn: ColumnDef<Propertise>[] = [
   {
     id: 'actions',
     header: 'Actions',
-    cell: () => (
-      <IconWrapper className='border w-fit p-2 hover:bg-brand/20'>
+    cell: ({ row }) => (
+      <IconWrapper onClick={() => onClick?.(row.original.id)} className='border w-fit p-2 hover:bg-brand/20'>
         <HugeiconsIcon size={16} icon={ViewIcon} />
       </IconWrapper>
     ),
