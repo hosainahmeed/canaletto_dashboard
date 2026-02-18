@@ -1,3 +1,4 @@
+import Chat from "../pages/support-manager/chat-manegment/Chat";
 
 export const SupportManagerRoutes = {
     children: [
@@ -7,7 +8,7 @@ export const SupportManagerRoutes = {
         },
         {
             path: "/support-manager/chat",
-            element: <h1>Support Chat</h1>
+            element: <Chat/>
         },
         {
             path: "/support-manager/profile",
