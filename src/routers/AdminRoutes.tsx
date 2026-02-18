@@ -11,6 +11,8 @@ import UpdateProfile from '../pages/admin/manage-profile/UpdateProfile';
 import AssignedManager from '../pages/admin/properties/details/AssignedManager';
 import ConstructionProgress from '../pages/admin/properties/details/ConstructionProgress';
 import PaymentInvoices from '../pages/admin/properties/details/PaymentInvoices';
+import PaymentInvoiceDetails from '../pages/admin/properties/details/PaymentInvoiceDetails';
+import PaymentPlanDetails from '../pages/admin/properties/details/PaymentPlanDetails';
 import PropertyDetails from '../pages/admin/properties/details/PropertyDetails';
 import PropertyFiles from '../pages/admin/properties/details/PropertyFiles';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
@@ -89,6 +91,14 @@ export const adminRoutes = {
     {
       path: "/admin/properties/invoices",
       element: <PaymentInvoices />
+    },
+    {
+      path: "/admin/properties/invoices/:id",
+      element: <PaymentInvoiceDetails />
+    },
+    {
+      path: "/admin/properties/payment-plan/:id",
+      element: <PaymentPlanDetails />
     },
     {
       path: "/admin/properties/progress",
