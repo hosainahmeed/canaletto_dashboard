@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import DynamicTable from '../../../components/shared/DynamicTable'
 import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
 import { Button } from '../../../components/ui/button'
+import TakeConfirm from '../../../components/ui/take-confirm'
 import { cn } from '../../../lib/utils'
 
 
@@ -52,19 +53,28 @@ const PropertyManager = () => {
           <Button
             onClick={() => navigate(`/admin/property-manager/${row?.original.id}`)}
             size="sm" variant="outline"><HugeiconsIcon icon={UserAccountIcon} /></Button>
-          <Button
-            onClick={() => console.log(row?.original.id, 'Delete clicked')}
-            size="sm"
-            variant="outline"
+          <TakeConfirm
+            title={`Are you sure you want to ${row?.original?.status === 'Active' ? 'block' : 'unblock'} ${row?.original.managerName}?`}
+            description={`This action will ${row?.original?.status === 'Active' ? 'block' : 'unblock'} ${row?.original.managerName}. They will ${row?.original?.status === 'Active' ? 'no longer' : 'be able to'} manage properties.`}
+            onConfirm={() => console.log(row?.original.id, 'Block clicked')}
+            onCancel={() => console.log(row?.original.id, 'Cancel clicked')}
+            confirmText="Continue"
+            cancelText="Cancel"
           >
-            <HugeiconsIcon
-              icon={
-                row?.original?.status == "Blocked"
-                  ? UnavailableIcon
-                  : CircleIcon
-              }
-            />
-          </Button>
+            <Button
+              onClick={() => console.log(row?.original.id, 'Delete clicked')}
+              size="sm"
+              variant="outline"
+            >
+              <HugeiconsIcon
+                icon={
+                  row?.original?.status == "Blocked"
+                    ? UnavailableIcon
+                    : CircleIcon
+                }
+              />
+            </Button>
+          </TakeConfirm>
         </div>
       ),
     },
