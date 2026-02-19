@@ -85,9 +85,7 @@ const MOCK_DATA: LegalUpdate[] = [
 function LegalUpdates() {
   const [searchQuery, setSearchQuery] = useState('')
 
-  const handleView = (id: string) => {
-    console.log('View legal update:', id)
-  }
+ 
 
   const columns: ColumnDef<LegalUpdate>[] = [
     {
@@ -131,7 +129,7 @@ function LegalUpdates() {
       header: 'Actions',
       cell: ({ row }) => (
         <IconWrapper
-          onClick={() => handleView(row.original.id)}
+         
           className="border w-fit p-2 hover:bg-brand/20 cursor-pointer"
         >
           <HugeiconsIcon size={16} icon={ViewIcon} />

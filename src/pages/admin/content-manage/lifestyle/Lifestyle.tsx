@@ -87,9 +87,7 @@ const MOCK_DATA: LifestyleItem[] = [
 function Lifestyle() {
   const [searchQuery, setSearchQuery] = useState('')
 
-  const handleView = (id: string) => {
-    console.log('View lifestyle item:', id)
-  }
+
 
   const columns: ColumnDef<LifestyleItem>[] = [
     {
@@ -150,7 +148,7 @@ function Lifestyle() {
       header: 'Actions',
       cell: ({ row }) => (
         <IconWrapper
-          onClick={() => handleView(row.original.id)}
+
           className="border w-fit p-2 hover:bg-brand/20 cursor-pointer"
         >
           <HugeiconsIcon size={16} icon={ViewIcon} />
@@ -166,46 +164,46 @@ function Lifestyle() {
   return (
     <div className="space-y-6">
       <PageLayout title="Lifestyle Content Management">
-      <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4 ">
-        
+        <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4 ">
 
-        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-          <Select>
-            <SelectTrigger className="w-full sm:w-48 bg-white border-gray-200">
-              <SelectValue placeholder="Filter by Type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="all">All</SelectItem>
-                <SelectItem value="hotels">Hotels</SelectItem>
-                <SelectItem value="resorts">Resorts</SelectItem>
-                <SelectItem value="dining">Dining & Cafés</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
 
-          <div className="relative w-full sm:w-64">
-            <HugeiconsIcon
-              icon={Search01Icon}
-              size={18}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-            />
-            <Input
-              placeholder="Search By Name"
-              className="pl-10 bg-white border-gray-200 focus:ring-brand focus:border-brand"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <Select>
+              <SelectTrigger className="w-full sm:w-48 bg-white border-gray-200">
+                <SelectValue placeholder="Filter by Type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="all">All</SelectItem>
+                  <SelectItem value="hotels">Hotels</SelectItem>
+                  <SelectItem value="resorts">Resorts</SelectItem>
+                  <SelectItem value="dining">Dining & Cafés</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+
+            <div className="relative w-full sm:w-64">
+              <HugeiconsIcon
+                icon={Search01Icon}
+                size={18}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              />
+              <Input
+                placeholder="Search By Name"
+                className="pl-10 bg-white border-gray-200 focus:ring-brand focus:border-brand"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <PageContent>
-        <DynamicTable
-          columns={columns}
-          data={filteredData}
-        />
-      </PageContent>
+        <PageContent>
+          <DynamicTable
+            columns={columns}
+            data={filteredData}
+          />
+        </PageContent>
       </PageLayout>
     </div>
   )
