@@ -4,7 +4,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { useState } from 'react'
 import DynamicTable from '../../../../components/shared/DynamicTable'
 import IconWrapper from '../../../../components/shared/cards/IconWrapper'
-import { PageContent } from '../../../../components/shared/PageLayout'
+import { PageContent, PageLayout } from '../../../../components/shared/PageLayout'
 import { Input } from '../../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select'
 import { cn } from '../../../../lib/utils'
@@ -35,7 +35,7 @@ const MOCK_DATA: ProjectItem[] = [
   },
   {
     id: '2',
-    image: 'https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=200&auto=format&fit=crop',
     title: 'Armani Beach Residences (Palm Jum...',
     status: 'New Launch',
     postedOn: '27 Aug 2026',
@@ -43,7 +43,7 @@ const MOCK_DATA: ProjectItem[] = [
   },
   {
     id: '3',
-    image: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecde9d7?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=200&auto=format&fit=crop',
     title: 'Beachgate by Address (Emaar Beac...',
     status: 'New Launch',
     postedOn: '27 Aug 2026',
@@ -51,7 +51,7 @@ const MOCK_DATA: ProjectItem[] = [
   },
   {
     id: '4',
-    image: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=200&auto=format&fit=crop',
     title: 'Parkgate (Dubai Hills Estate)',
     status: 'Upcoming Launch',
     postedOn: '27 Aug 2026',
@@ -59,7 +59,7 @@ const MOCK_DATA: ProjectItem[] = [
   },
   {
     id: '5',
-    image: 'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=200&auto=format&fit=crop',
     title: 'Oria at Dubai Creek Harbour',
     status: 'Upcoming Launch',
     postedOn: '27 Aug 2026',
@@ -67,7 +67,7 @@ const MOCK_DATA: ProjectItem[] = [
   },
   {
     id: '6',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=200&auto=format&fit=crop',
     title: 'Binghatti Onyx (Jumeirah Village Cir...',
     status: 'Upcoming Launch',
     postedOn: '27 Aug 2026',
@@ -75,7 +75,7 @@ const MOCK_DATA: ProjectItem[] = [
   },
   {
     id: '7',
-    image: 'https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=200&auto=format&fit=crop',
     title: 'Aeon at Dubai Creek Harbour',
     status: 'Upcoming Launch',
     postedOn: '27 Aug 2026',
@@ -83,7 +83,7 @@ const MOCK_DATA: ProjectItem[] = [
   },
   {
     id: '8',
-    image: 'https://images.unsplash.com/photo-1512915922686-50a11e36c1c1?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=200&auto=format&fit=crop',
     title: 'Beachgate by Address (Emaar Beac...',
     status: 'Available to Reserve',
     postedOn: '27 Aug 2026',
@@ -91,7 +91,7 @@ const MOCK_DATA: ProjectItem[] = [
   },
   {
     id: '9',
-    image: 'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=200&auto=format&fit=crop',
     title: 'Seapoint (Emaar Beachfront)',
     status: 'Available to Reserve',
     postedOn: '27 Aug 2026',
@@ -172,11 +172,9 @@ function NewProjects() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div className="flex items-center gap-2 text-gray-600">
-          <HugeiconsIcon icon={ArrowLeft01Icon} size={20} />
-          <span className="font-medium text-lg text-gray-800">New Projects</span>
-        </div>
+      <PageLayout title="New Projects">
+      <div className="flex flex-col sm:flex-row justify-end mb-4 items-start sm:items-center gap-4 ">
+       
 
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <Select>
@@ -215,6 +213,7 @@ function NewProjects() {
           data={filteredData}
         />
       </PageContent>
+      </PageLayout>
     </div>
   )
 }

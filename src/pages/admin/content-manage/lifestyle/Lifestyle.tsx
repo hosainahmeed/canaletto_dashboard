@@ -4,7 +4,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { useState } from 'react'
 import DynamicTable from '../../../../components/shared/DynamicTable'
 import IconWrapper from '../../../../components/shared/cards/IconWrapper'
-import { PageContent } from '../../../../components/shared/PageLayout'
+import { PageContent, PageLayout } from '../../../../components/shared/PageLayout'
 import { Input } from '../../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select'
 
@@ -30,7 +30,7 @@ const MOCK_DATA: LifestyleItem[] = [
   },
   {
     id: '2',
-    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=200&auto=format&fit=crop',
     title: 'Honeymoon Suite',
     lifestyleType: 'Resorts',
     rating: 4.8,
@@ -39,7 +39,7 @@ const MOCK_DATA: LifestyleItem[] = [
   },
   {
     id: '3',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=200&auto=format&fit=crop',
     title: 'Villa Suite',
     lifestyleType: 'Dining & Cafés',
     rating: 4.8,
@@ -48,7 +48,7 @@ const MOCK_DATA: LifestyleItem[] = [
   },
   {
     id: '4',
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=200&auto=format&fit=crop',
     title: 'Ocean View Room',
     lifestyleType: 'Resorts',
     rating: 4.8,
@@ -57,7 +57,7 @@ const MOCK_DATA: LifestyleItem[] = [
   },
   {
     id: '5',
-    image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=200&auto=format&fit=crop',
     title: 'Signature Suite',
     lifestyleType: 'Dining & Cafés',
     rating: 4.8,
@@ -66,7 +66,7 @@ const MOCK_DATA: LifestyleItem[] = [
   },
   {
     id: '6',
-    image: 'https://images.unsplash.com/photo-1551882547-ff43c63faf79?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=200&auto=format&fit=crop',
     title: 'Junior Suite',
     lifestyleType: 'Resorts',
     rating: 4.8,
@@ -75,7 +75,7 @@ const MOCK_DATA: LifestyleItem[] = [
   },
   {
     id: '7',
-    image: 'https://images.unsplash.com/photo-1561501900-3701fa6a0f64?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=200&auto=format&fit=crop',
     title: 'Corner Suite',
     lifestyleType: 'Hotels',
     rating: 4.8,
@@ -165,11 +165,9 @@ function Lifestyle() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div className="flex items-center gap-2 text-gray-600">
-          <HugeiconsIcon icon={ArrowLeft01Icon} size={20} />
-          <span className="font-medium text-lg text-gray-800">Lifestyle Updates</span>
-        </div>
+      <PageLayout title="Lifestyle Content Management">
+      <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4 ">
+        
 
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <Select>
@@ -208,6 +206,7 @@ function Lifestyle() {
           data={filteredData}
         />
       </PageContent>
+      </PageLayout>
     </div>
   )
 }

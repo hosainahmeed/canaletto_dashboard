@@ -4,7 +4,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { useState } from 'react'
 import DynamicTable from '../../../../components/shared/DynamicTable'
 import IconWrapper from '../../../../components/shared/cards/IconWrapper'
-import { PageContent } from '../../../../components/shared/PageLayout'
+import { PageContent, PageLayout } from '../../../../components/shared/PageLayout'
 import { Input } from '../../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select'
 
@@ -26,56 +26,56 @@ const MOCK_DATA: LegalUpdate[] = [
   },
   {
     id: '2',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2959213?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Emma Braun',
   },
   {
     id: '3',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Noah Hoffmann',
   },
   {
     id: '4',
-    image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Jonas Weber',
   },
   {
     id: '5',
-    image: 'https://images.unsplash.com/photo-1423592707957-3b212afa6733?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Maximilian Becker',
   },
   {
     id: '6',
-    image: 'https://images.unsplash.com/photo-1528744585532-75ca0a138d85?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Hannah Wagner',
   },
   {
     id: '7',
-    image: 'https://images.unsplash.com/photo-1589391060197-391f5ca15570?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Finn Richter',
   },
   {
     id: '8',
-    image: 'https://images.unsplash.com/photo-1507679799987-c7377ec48696?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Alex Müller',
   },
   {
     id: '9',
-    image: 'https://images.unsplash.com/photo-1453948575154-e574f202280b?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Emma Braun',
@@ -146,11 +146,9 @@ function LegalUpdates() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div className="flex items-center gap-2 text-gray-600">
-          <HugeiconsIcon icon={ArrowLeft01Icon} size={20} />
-          <span className="font-medium text-lg text-gray-800">Legal Updates</span>
-        </div>
+      <PageLayout title="Legal Updates">  
+      <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4">
+        
 
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <Select>
@@ -190,6 +188,7 @@ function LegalUpdates() {
           data={filteredData}
         />
       </PageContent>
+      </PageLayout>
     </div>
   )
 }
