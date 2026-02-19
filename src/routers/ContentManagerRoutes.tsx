@@ -1,4 +1,5 @@
 import ContentManagerDashboard from '../pages/content-manager/ContentManagerDashboard';
+import SupportManagerProfile from '../pages/support-manager/support-manager-profile/SupportManagerProfile';
 
 export const ContentManagerRoutes = {
   children: [
@@ -24,7 +25,7 @@ export const ContentManagerRoutes = {
     },
     {
       path: "/content-manager/manage-profile",
-      element: <h1>Manage Profile</h1>
+      element: <SupportManagerProfile />
     },
   ],
 };
