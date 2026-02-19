@@ -10,13 +10,15 @@ import ChangePassword from '../pages/admin/manage-profile/ChangePassword';
 import UpdateProfile from '../pages/admin/manage-profile/UpdateProfile';
 import AssignedManager from '../pages/admin/properties/details/AssignedManager';
 import ConstructionProgress from '../pages/admin/properties/details/ConstructionProgress';
-import PaymentInvoices from '../pages/admin/properties/details/PaymentInvoices';
 import PaymentInvoiceDetails from '../pages/admin/properties/details/PaymentInvoiceDetails';
+import PaymentInvoices from '../pages/admin/properties/details/PaymentInvoices';
 import PaymentPlanDetails from '../pages/admin/properties/details/PaymentPlanDetails';
 import PropertyDetails from '../pages/admin/properties/details/PropertyDetails';
 import PropertyFiles from '../pages/admin/properties/details/PropertyFiles';
 import ManagePropertise from '../pages/admin/properties/ManagePropertise';
+import AddPropertyManager from '../pages/admin/property-manager/AddPropertyManager';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
+import PropertyManagerDetails from '../pages/admin/property-manager/PropertyManagerDetails';
 
 export const adminRoutes = {
   children: [
@@ -43,6 +45,14 @@ export const adminRoutes = {
     {
       path: "/admin/property-manager",
       element: <PropertyManager />
+    },
+    {
+      path: "/admin/property-manager/:id",
+      element: <PropertyManagerDetails />
+    },
+    {
+      path: "/admin/property-manager/add",
+      element: <AddPropertyManager />
     },
     {
       path: "/admin/content-management",

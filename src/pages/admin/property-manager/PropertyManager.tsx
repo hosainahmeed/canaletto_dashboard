@@ -1,6 +1,7 @@
 
 import { AddSquareIcon, CircleIcon, City01Icon, UnavailableIcon, UserAccountIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
+import { Link, useNavigate } from 'react-router-dom'
 import DynamicTable from '../../../components/shared/DynamicTable'
 import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
 import { Button } from '../../../components/ui/button'
@@ -8,6 +9,7 @@ import { cn } from '../../../lib/utils'
 
 
 const PropertyManager = () => {
+  const navigate = useNavigate()
   const column = [
     {
       header: 'Manager Name',
@@ -48,7 +50,7 @@ const PropertyManager = () => {
       cell: ({ row }: any) => (
         <div className="flex items-center gap-2">
           <Button
-            onClick={() => console.log(row?.original.id, 'View clicked')}
+            onClick={() => navigate(`/admin/property-manager/${row?.original.id}`)}
             size="sm" variant="outline"><HugeiconsIcon icon={UserAccountIcon} /></Button>
           <Button
             onClick={() => console.log(row?.original.id, 'Delete clicked')}
@@ -145,8 +147,10 @@ const PropertyManager = () => {
   ]
   return (
     <PageLayout title="Property Manager"
-      action={<Button className='bg-brand text-white' variant="outline">
-        <HugeiconsIcon icon={AddSquareIcon} /> Add New Property</Button>} icon={<HugeiconsIcon icon={City01Icon} />}>
+      action={
+        <Link to={`/admin/property-manager/add`}>
+          <Button className='bg-brand text-white' variant="outline">
+            <HugeiconsIcon icon={AddSquareIcon} /> Add New Property</Button></Link>} icon={<HugeiconsIcon icon={City01Icon} />}>
       <PageContent>
         <DynamicTable data={data} columns={column} />
       </PageContent>

@@ -1,10 +1,10 @@
+import cap from "../../../../assets/Frame.png";
 import FormalCard from "../../../../components/shared/cards/FormalCard";
 import {
   PageContent,
   PageLayout,
 } from "../../../../components/shared/PageLayout";
 import { ProgressBar } from "../../../../components/shared/ProgressBar";
-import cap from "../../../../assets/Frame.png";
 
 const progressData = [
   {
@@ -66,12 +66,11 @@ function ConstructionProgress() {
             </div>
             <ProgressBar percent={60} />
           </div>
-
           <div className="mt-6 bg-white rounded-lg ">
             <ol className="divide-y divide-gray-100">
               {progressData.map((item, idx) => (
                 <li key={item.step} className="flex items-start px-6 py-4">
-                  <div className="w-8 flex-shrink-0 text-lg font-semibold text-[#666666]">
+                  <div className="w-8 shrink-0 text-lg font-semibold text-[#666666]">
                     {idx + 1}.
                   </div>
                   <div className="flex-1">
