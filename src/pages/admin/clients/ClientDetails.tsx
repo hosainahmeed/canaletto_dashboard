@@ -1,6 +1,7 @@
 import { EyeIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import type { ColumnDef } from '@tanstack/react-table'
+import { useNavigate } from 'react-router-dom'
 import FormalCard from '../../../components/shared/cards/FormalCard'
 import DynamicTable from '../../../components/shared/DynamicTable'
 import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
@@ -9,6 +10,7 @@ import { Button } from '../../../components/ui/button'
 import { cn } from '../../../lib/utils'
 
 interface ClientDetails {
+  _id: string
   profileImage: string
   fullName: string
   email: string
@@ -18,6 +20,7 @@ interface ClientDetails {
 }
 
 interface AssignedProperty {
+  _id: string
   name: string
   type: string
   status: string
@@ -26,7 +29,9 @@ interface AssignedProperty {
 }
 
 const ClientDetails = () => {
+  const navigate = useNavigate()
   const clientDetails: ClientDetails = {
+    _id: '1',
     profileImage: 'https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg',
     fullName: 'Roberts Junior',
     email: 'robert @canaletto.com',
@@ -68,7 +73,7 @@ const ClientDetails = () => {
       header: 'Action',
       cell: ({ row }) => (
         <Button
-          onClick={() => console.log(row)}
+          onClick={() => navigate(`/admin/properties/${row.original._id}`)}
           size="sm"
           variant="outline">
           <HugeiconsIcon icon={EyeIcon} />
@@ -79,6 +84,7 @@ const ClientDetails = () => {
 
   const assignedProperties = [
     {
+      _id: '1',
       name: 'The Wilds',
       type: 'Residential Living',
       status: 'Under Construction',
@@ -86,6 +92,7 @@ const ClientDetails = () => {
       projectImage: "https://cdn.britannica.com/05/157305-004-53D5D212.jpg"
     },
     {
+      _id: '2',
       name: 'The Wilds',
       type: 'Residential Living',
       status: 'Under Construction',
