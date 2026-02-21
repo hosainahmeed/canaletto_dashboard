@@ -2,8 +2,8 @@ import { ArrowLeft01Icon, Search01Icon, ViewIcon } from '@hugeicons/core-free-ic
 import { HugeiconsIcon } from '@hugeicons/react'
 import type { ColumnDef } from '@tanstack/react-table'
 import { useState } from 'react'
-import DynamicTable from '../../../../components/shared/DynamicTable'
 import IconWrapper from '../../../../components/shared/cards/IconWrapper'
+import DynamicTable from '../../../../components/shared/DynamicTable'
 import { PageContent } from '../../../../components/shared/PageLayout'
 import { Input } from '../../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select'
@@ -19,63 +19,49 @@ export type LegalUpdate = {
 const MOCK_DATA: LegalUpdate[] = [
   {
     id: '1',
-    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyaminmellish-106399.jpg&fm=jpg',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Lena Fischer',
   },
   {
-    id: '2',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2959213?q=80&w=200&auto=format&fit=crop',
-    title: 'Dubai Introduces Updated Regulations for Real Estate',
-    postedOn: '27 Aug 2026',
-    postedBy: 'Emma Braun',
-  },
-  {
     id: '3',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyaminmellish-106399.jpg&fm=jpg',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Noah Hoffmann',
   },
   {
     id: '4',
-    image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyaminmellish-106399.jpg&fm=jpg',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Jonas Weber',
   },
   {
     id: '5',
-    image: 'https://images.unsplash.com/photo-1423592707957-3b212afa6733?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyaminmellish-106399.jpg&fm=jpg',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Maximilian Becker',
   },
   {
-    id: '6',
-    image: 'https://images.unsplash.com/photo-1528744585532-75ca0a138d85?q=80&w=200&auto=format&fit=crop',
-    title: 'Dubai Introduces Updated Regulations for Real Estate',
-    postedOn: '27 Aug 2026',
-    postedBy: 'Hannah Wagner',
-  },
-  {
     id: '7',
-    image: 'https://images.unsplash.com/photo-1589391060197-391f5ca15570?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyaminmellish-106399.jpg&fm=jpg',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Finn Richter',
   },
   {
     id: '8',
-    image: 'https://images.unsplash.com/photo-1507679799987-c7377ec48696?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyaminmellish-106399.jpg&fm=jpg',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Alex Müller',
   },
   {
     id: '9',
-    image: 'https://images.unsplash.com/photo-1453948575154-e574f202280b?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyaminmellish-106399.jpg&fm=jpg',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Emma Braun',
@@ -107,7 +93,7 @@ function LegalUpdates() {
       accessorKey: 'title',
       header: 'Title',
       cell: ({ row }) => (
-        <span className="font-medium text-gray-700 max-w-[300px] truncate block">
+        <span className="font-medium text-gray-700 max-w-75 truncate block">
           {row.original.title}
         </span>
       ),
