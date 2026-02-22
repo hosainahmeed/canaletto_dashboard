@@ -18,10 +18,8 @@ function LifestyleUpdateDetails() {
     Official_site_for_visit: "http://www.canalettosky.com",
   };
 
- 
-
   return (
-    <PageLayout title="Lifestyle Update Details " >
+    <PageLayout title="Lifestyle Update Details ">
       <div className="space-y-8">
         {/* Top Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
@@ -146,21 +144,22 @@ function LifestyleUpdateDetails() {
           header="Lifestyle Update Good to Know"
           headerStyle="font-nunito-semibold-italic"
         >
-         <div className="glex flex-col gap-4">
-              <div className="flex items-center gap-1">
-                 <img src={chkImage} alt="Checkmark" />
-                  <p className="text-[#666666] ">Best Time to Visit</p>
-              </div>
-              <div className="flex items-center gap-1">
-                 <img src={chkImage} alt="Checkmark" />
-                  <p className="text-[#666666]">Smart casual / Beachwear at pool area</p>
-              </div>
-              <div className="flex items-center gap-1">
-                 <img src={chkImage} alt="Checkmark" />
-                  <p className="text-[#666666]">Yes, advance booking recommended</p>
-              </div>
-             
-         </div>
+          <div className="glex flex-col gap-4">
+            <div className="flex items-center gap-1">
+              <img src={chkImage} alt="Checkmark" />
+              <p className="text-[#666666] ">Best Time to Visit</p>
+            </div>
+            <div className="flex items-center gap-1">
+              <img src={chkImage} alt="Checkmark" />
+              <p className="text-[#666666]">
+                Smart casual / Beachwear at pool area
+              </p>
+            </div>
+            <div className="flex items-center gap-1">
+              <img src={chkImage} alt="Checkmark" />
+              <p className="text-[#666666]">Yes, advance booking recommended</p>
+            </div>
+          </div>
         </FormalCard>
       </div>
     </PageLayout>

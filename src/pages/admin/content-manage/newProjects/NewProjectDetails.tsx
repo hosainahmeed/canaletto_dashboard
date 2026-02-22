@@ -8,6 +8,24 @@ function NewProjectDetails() {
     post_on: "27 Aug 2026",
     post_by: "Lena Fischer",
   };
+
+
+    const lifestyle_update_Info = {
+    Property_Size: "from 270 sqm",
+    Rooms: "from 3-bedroom",
+    Type_of_Use: "Residential Living",
+    Property_Type: "Villas",
+    Units: "900 Units",
+    Property_Location: "Abu Dhabi, Al Hudayriat Island, Bashayer Villas",
+  };
+
+   const Project_Information = {
+    Starting_Price: "AED 1.45M",
+    Payment_Plan: "65 / 35",
+    Investment_Options: "Installments",
+    Handover_Year: "Jan 2028",
+  };
+
   return (
     <PageLayout title="New Projects">
       <div className="space-y-8">
@@ -60,6 +78,128 @@ function NewProjectDetails() {
             </FormalCard>
           </div>
         </div>
+
+
+          {/* Lifestyle info */}
+          <div className="lg:col-span-3">
+            <FormalCard
+              header="About Project"
+              headerStyle="font-nunito-semibold-italic"
+            >
+              <div className="max-w-6xl w-full p-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col">
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Post Size
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {lifestyle_update_Info.Property_Size}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Rooms
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {lifestyle_update_Info.Rooms}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Type of Use
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {lifestyle_update_Info.Type_of_Use}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Property Type
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {lifestyle_update_Info.Property_Type}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Units
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {lifestyle_update_Info.Units}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Property Location
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {lifestyle_update_Info.Property_Location}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FormalCard>
+          </div>
+
+
+           {/* Lifestyle info */}
+          <div className="lg:col-span-3">
+            <FormalCard
+              header="Lifestyle Info."
+              headerStyle="font-nunito-semibold-italic"
+            >
+              <div className="space-y-5 flex flex-col justify-between gap-2 max-w-5xl md:flex-col lg:flex-row">
+                <div className="flex flex-col gap-5 md:gap-6 lg:gap-8">
+                  <div>
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Starting Price
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {Project_Information.Starting_Price}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Payment Plan
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {Project_Information.Payment_Plan}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-5 md:gap-6 lg:gap-8">
+                  <div>
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Investment Options
+                    </h3>
+                    <div className="flex items-center">
+                      
+                      <p className="text-gray-700 font-medium">
+                        {Project_Information.Investment_Options}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                     Handover Year
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {Project_Information.Handover_Year}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FormalCard>
+          </div>
+
 
         {/* Description */}
         <FormalCard
