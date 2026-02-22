@@ -95,6 +95,18 @@ export const adminRoutes = {
       element: <NewProjectDetails />
     },
     {
+      path: "/admin/content-manager/:id",
+      element: <ContenManagerDetails />
+    },
+    {
+      path: "/admin/content-manager/add",
+      element: <AddContentManager />
+    },
+    {
+      path: "/admin/content-manage/market-updates/:id",
+      element: <MarketUpdateDetails />
+    },
+    {
       path: "/admin/support",
       element: <h1>Support Team</h1>
     },

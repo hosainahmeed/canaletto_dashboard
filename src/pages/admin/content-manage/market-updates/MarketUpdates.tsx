@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { ArrowLeft01Icon, Search01Icon, ViewIcon } from '@hugeicons/core-free-icons'
+=======
+import { Search01Icon, ViewIcon } from '@hugeicons/core-free-icons'
+>>>>>>> 420e734 (update the issue)
 import { HugeiconsIcon } from '@hugeicons/react'
 import type { ColumnDef } from '@tanstack/react-table'
 import { useState } from 'react'
@@ -93,7 +97,7 @@ const MOCK_DATA: MarketUpdate[] = [
 ];
 
 function MarketUpdates() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
 
   const handleView = (id: string) => {
@@ -143,7 +147,7 @@ function MarketUpdates() {
       header: "Actions",
       cell: ({ row }) => (
         <IconWrapper
-         onClick={()=>handleView(row.original.id)}
+          onClick={() => handleView(row.original.id)}
           className="border w-fit p-2 hover:bg-brand/20 cursor-pointer"
         >
           <HugeiconsIcon size={16} icon={ViewIcon} />
