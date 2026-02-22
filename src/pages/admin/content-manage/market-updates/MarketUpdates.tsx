@@ -2,8 +2,9 @@ import { ArrowLeft01Icon, Search01Icon, ViewIcon } from '@hugeicons/core-free-ic
 import { HugeiconsIcon } from '@hugeicons/react'
 import type { ColumnDef } from '@tanstack/react-table'
 import { useState } from 'react'
-import DynamicTable from '../../../../components/shared/DynamicTable'
+import { useNavigate } from 'react-router-dom'
 import IconWrapper from '../../../../components/shared/cards/IconWrapper'
+import DynamicTable from '../../../../components/shared/DynamicTable'
 import { PageContent } from '../../../../components/shared/PageLayout'
 import { Input } from '../../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select'
@@ -84,9 +85,11 @@ const MOCK_DATA: MarketUpdate[] = [
 
 function MarketUpdates() {
   const [searchQuery, setSearchQuery] = useState('')
+  const navigate = useNavigate()
 
   const handleView = (id: string) => {
     console.log('View market update:', id)
+    navigate(`/admin/content-manage/market-updates/${id}`)
   }
 
   const columns: ColumnDef<MarketUpdate>[] = [
@@ -107,7 +110,7 @@ function MarketUpdates() {
       accessorKey: 'title',
       header: 'Title',
       cell: ({ row }) => (
-        <span className="font-medium text-gray-700 max-w-[300px] truncate block">
+        <span className="font-medium text-gray-700 max-w-75 truncate block">
           {row.original.title}
         </span>
       ),
