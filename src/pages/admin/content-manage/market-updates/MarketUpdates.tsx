@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { ArrowLeft01Icon, Search01Icon, ViewIcon } from '@hugeicons/core-free-icons'
-=======
 import { Search01Icon, ViewIcon } from '@hugeicons/core-free-icons'
->>>>>>> 420e734 (update the issue)
 import { HugeiconsIcon } from '@hugeicons/react'
 import type { ColumnDef } from '@tanstack/react-table'
 import { useState } from 'react'
