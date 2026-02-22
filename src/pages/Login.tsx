@@ -1,10 +1,10 @@
 import { Eye, EyeOff, Loader } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/brandLogo.svg";
 import { Input } from "../components/ui/input";
-import { RedirectByRole } from "../lib/redirects";
 import { setUserInLocalStorage } from "../lib/auth";
+import { RedirectByRole } from "../lib/redirects";
 
 interface FormData {
   email: string;
@@ -63,7 +63,7 @@ function Login() {
       const user = setUserInLocalStorage(formData.email);
 
       RedirectByRole(user.role, navigate);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
     } finally {
@@ -134,7 +134,11 @@ function Login() {
               {error}
             </div>
           )}
-          
+
+          <Link to={"/forgot-password"} >
+            <small className='flex items-center underline justify-end'>Forgot password</small>
+          </Link>
+
           <button
             type="submit"
             disabled={loading}
