@@ -7,28 +7,29 @@ interface ImageGalleryProps {
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className }) => {
-  if (images.length !== 5) {
-    console.warn("bottomImages array should contain exactly 4 images");
-  }
+  if (!images || images.length === 0) return null;
 
   return (
-    <div className={cn("flex flex-col items-center space-y-4", className)}>
-      {/* Top Image */}
-      <img
-        src={images[0]}
-        alt="Top"
-        className="w-full h-50 object-cover rounded-lg"
-      />
+    <div className={cn("flex flex-col items-center space-y-4 w-full", className)}>
+      
+      <div className="w-full">
+        <img
+          src={images[0]}
+          alt="Main"
+          className="w-full object-cover rounded-lg h-48 sm:h-56 md:h-64 lg:h-72"
+        />
+      </div>
 
-      {/* Bottom Row of 4 Images */}
-      <div className="flex space-x-2">
+     
+      <div className="w-full grid grid-cols-2 gap-2 sm:grid-cols-4">
         {images.slice(1).map((img, index) => (
-          <img
-            key={index}
-            src={img}
-            alt={`Bottom ${index + 1}`}
-            className="w-full h-17 object-cover rounded-md"
-          />
+          <div key={index} className="w-full">
+            <img
+              src={img}
+              alt={`Thumb ${index + 1}`}
+              className="w-full object-cover rounded-md h-20 sm:h-24"
+            />
+          </div>
         ))}
       </div>
     </div>
