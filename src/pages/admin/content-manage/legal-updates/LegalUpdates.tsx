@@ -7,6 +7,7 @@ import { PageContent, PageLayout } from '../../../../components/shared/PageLayou
 import DynamicTable from '../../../../components/shared/DynamicTable'
 import { Input } from '../../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select'
+import { useNavigate } from 'react-router-dom'
 
 export type LegalUpdate = {
   id: string
@@ -85,6 +86,12 @@ const MOCK_DATA: LegalUpdate[] = [
 function LegalUpdates() {
   const [searchQuery, setSearchQuery] = useState('')
 
+   const navigate = useNavigate()
+
+  const handleView = (id: string) => {
+    console.log('View legal update:', id)
+    navigate(`/admin/content-manage/legal-updates/${id}`)
+  }
  
 
   const columns: ColumnDef<LegalUpdate>[] = [
@@ -129,7 +136,7 @@ function LegalUpdates() {
       header: 'Actions',
       cell: ({ row }) => (
         <IconWrapper
-         
+         onClick={()=>handleView(row.original.id)}
           className="border w-fit p-2 hover:bg-brand/20 cursor-pointer"
         >
           <HugeiconsIcon size={16} icon={ViewIcon} />

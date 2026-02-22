@@ -1,8 +1,11 @@
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import ClientDetails from '../pages/admin/clients/ClientDetails';
 import ManageClients from '../pages/admin/clients/ManageClients';
+import LegalUpdateDetails from '../pages/admin/content-manage/legal-updates/LegalUpdateDetails';
+import LifestyleUpdateDetails from '../pages/admin/content-manage/lifestyle/LifestyleUpdateDetails';
 import ManageContent from '../pages/admin/content-manage/ManageContent';
 import MarketUpdateDetails from '../pages/admin/content-manage/market-updates/MarketUpdateDetails';
+import NewProjectDetails from '../pages/admin/content-manage/newProjects/NewProjectDetails';
 import AddContentManager from '../pages/admin/content-manager-manage/AddContentManager';
 import ContenManagerDetails from '../pages/admin/content-manager-manage/conten-manager-details/ContenManagerDetails';
 import ContentManager from '../pages/admin/content-manager-manage/ContentManager';
@@ -78,6 +81,18 @@ export const adminRoutes = {
     {
       path: "/admin/content-manage/market-updates/:id",
       element: <MarketUpdateDetails />
+    },
+    {
+      path: "/admin/content-manage/legal-updates/:id",
+      element: <LegalUpdateDetails />
+    },
+    {
+      path: "/admin/content-manage/lifestyle-updates/:id",
+      element: <LifestyleUpdateDetails />
+    },
+    {
+      path: "/admin/content-manage/new-projects/:id",
+      element: <NewProjectDetails />
     },
     {
       path: "/admin/support",
