@@ -1,5 +1,6 @@
 import FormalCard from '../../../../components/shared/cards/FormalCard'
 import ImageGallery from '../../../../components/shared/imageComponents/ImageGallery'
+import { PageLayout } from '../../../../components/shared/PageLayout'
 
 
 function MarketUpdateDetails() {
@@ -9,7 +10,8 @@ function MarketUpdateDetails() {
     post_by: "Lena Fischer",
   }
   return (
-    <div className="space-y-8">
+   <PageLayout title='Market Update Details'>
+     <div className="space-y-8">
 
       {/* Top Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
@@ -78,6 +80,8 @@ function MarketUpdateDetails() {
       </FormalCard>
 
     </div>
+
+   </PageLayout>
   )
 }
 
