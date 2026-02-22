@@ -1,12 +1,12 @@
-import { Download, Eye } from 'lucide-react'
-import NoData from '../../../../components/shared/NoData'
+import { Eye } from 'lucide-react'
 import FormalCard from '../../../../components/shared/cards/FormalCard'
+import NoData from '../../../../components/shared/NoData'
 import { PageContent, PageLayout } from '../../../../components/shared/PageLayout'
 
 const propertyFiles = [
-  { id: '1', name: 'Property_document 01 .Pdf' },
-  { id: '2', name: 'Property_document 02 .Pdf' },
-  { id: '3', name: 'Property_document 03 .Pdf' },
+  { id: '1', name: 'Property_document 01 .Pdf', pdfLink: 'https://tourism.gov.in/sites/default/files/2019-04/dummy-pdf_2.pdf' },
+  { id: '2', name: 'Property_document 02 .Pdf', pdfLink: 'https://tourism.gov.in/sites/default/files/2019-04/dummy-pdf_2.pdf' },
+  { id: '3', name: 'Property_document 03 .Pdf', pdfLink: 'https://tourism.gov.in/sites/default/files/2019-04/dummy-pdf_2.pdf' },
 ]
 
 function PropertyFiles() {
@@ -28,15 +28,18 @@ Project / Property Files" >
                     <button
                       className="p-2 rounded-md bg-[#FAF5FF] text-purple-500 hover:bg-[#F3E8FF] transition-colors cursor-pointer"
                       title="View"
+                      onClick={() => window.open(file.pdfLink, '_blank')}
                     >
                       <Eye size={18} />
                     </button>
-                    <button
-                      className="p-2 rounded-md bg-[#EFF6FF] text-blue-500 hover:bg-[#DBEAFE] transition-colors cursor-pointer"
-                      title="Download"
-                    >
-                      <Download size={18} />
-                    </button>
+                    {/* <a href={file.pdfLink} download>
+                      <button
+                        className="p-2 rounded-md bg-[#EFF6FF] text-blue-500 hover:bg-[#DBEAFE] transition-colors cursor-pointer"
+                        title="Download"
+                      >
+                        <Download size={18} />
+                      </button>
+                    </a> */}
                   </div>
                 </div>
               ))}

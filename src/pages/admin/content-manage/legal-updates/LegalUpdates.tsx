@@ -2,9 +2,9 @@ import { ArrowLeft01Icon, Search01Icon, ViewIcon } from '@hugeicons/core-free-ic
 import { HugeiconsIcon } from '@hugeicons/react'
 import type { ColumnDef } from '@tanstack/react-table'
 import { useState } from 'react'
-import DynamicTable from '../../../../components/shared/DynamicTable'
 import IconWrapper from '../../../../components/shared/cards/IconWrapper'
 import { PageContent, PageLayout } from '../../../../components/shared/PageLayout'
+import DynamicTable from '../../../../components/shared/DynamicTable'
 import { Input } from '../../../../components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select'
 
@@ -19,7 +19,7 @@ export type LegalUpdate = {
 const MOCK_DATA: LegalUpdate[] = [
   {
     id: '1',
-    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=200&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyaminmellish-106399.jpg&fm=jpg',
     title: 'Dubai Introduces Updated Regulations for Real Estate',
     postedOn: '27 Aug 2026',
     postedBy: 'Lena Fischer',
@@ -105,7 +105,7 @@ function LegalUpdates() {
       accessorKey: 'title',
       header: 'Title',
       cell: ({ row }) => (
-        <span className="font-medium text-gray-700 max-w-[300px] truncate block">
+        <span className="font-medium text-gray-700 max-w-75 truncate block">
           {row.original.title}
         </span>
       ),

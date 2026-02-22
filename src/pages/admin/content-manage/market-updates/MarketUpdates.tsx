@@ -1,26 +1,13 @@
-import {
-  ArrowLeft01Icon,
-  Search01Icon,
-  ViewIcon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
-import type { ColumnDef } from "@tanstack/react-table";
-import { useState } from "react";
-import DynamicTable from "../../../../components/shared/DynamicTable";
-import IconWrapper from "../../../../components/shared/cards/IconWrapper";
-import {
-  PageContent,
-  PageLayout,
-} from "../../../../components/shared/PageLayout";
-import { Input } from "../../../../components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../../../components/ui/select";
+import { ArrowLeft01Icon, Search01Icon, ViewIcon } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
+import type { ColumnDef } from '@tanstack/react-table'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import IconWrapper from '../../../../components/shared/cards/IconWrapper'
+import DynamicTable from '../../../../components/shared/DynamicTable'
+import { PageContent, PageLayout } from '../../../../components/shared/PageLayout'
+import { Input } from '../../../../components/ui/input'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select'
 
 export type MarketUpdate = {
   id: string;
@@ -107,8 +94,12 @@ const MOCK_DATA: MarketUpdate[] = [
 
 function MarketUpdates() {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate()
 
- 
+  const handleView = (id: string) => {
+    console.log('View market update:', id)
+    navigate(`/admin/content-manage/market-updates/${id}`)
+  }
 
   const columns: ColumnDef<MarketUpdate>[] = [
     {
@@ -128,7 +119,7 @@ function MarketUpdates() {
       accessorKey: "title",
       header: "Title",
       cell: ({ row }) => (
-        <span className="font-medium text-gray-700 max-w-[300px] truncate block">
+        <span className="font-medium text-gray-700 max-w-75 truncate block">
           {row.original.title}
         </span>
       ),
@@ -152,7 +143,7 @@ function MarketUpdates() {
       header: "Actions",
       cell: ({ row }) => (
         <IconWrapper
-         
+         onClick={()=>handleView(row.original.id)}
           className="border w-fit p-2 hover:bg-brand/20 cursor-pointer"
         >
           <HugeiconsIcon size={16} icon={ViewIcon} />
