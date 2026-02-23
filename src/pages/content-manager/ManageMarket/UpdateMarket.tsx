@@ -7,7 +7,8 @@ import { Button } from '../../../components/ui/button'
 import { Field, FieldLabel } from '../../../components/ui/field'
 import { Input } from '../../../components/ui/input'
 
-const AddNewMarket = () => {
+const UpdateMarket = () => {
+
   const [content, setContent] = useState('')
 
   const [images] = useState<string[]>([
@@ -20,13 +21,13 @@ const AddNewMarket = () => {
 
   return (
     <div className="">
-      <PageLayout title="Add Market Update">
+      <PageLayout title="Update Market">
         <PageContent>
           <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
             {/* Form Header */}
             <div className="p-8 border-b border-gray-100">
-              <h2 className="text-2xl font-semibold text-gray-800 italic font-nunito-semibold-italic">Add or Update Market Update</h2>
-              <p className="text-sm text-gray-400 mt-1 italic">Create or Edit Market Insights</p>
+              <h2 className="text-2xl font-semibold text-gray-800 italic font-nunito-semibold-italic">Update Market</h2>
+              <p className="text-sm text-gray-400 mt-1 italic">Edit Market Insights</p>
             </div>
 
             <div className="p-10 space-y-10">
@@ -82,4 +83,4 @@ const AddNewMarket = () => {
   )
 }
 
-export default AddNewMarket
+export default UpdateMarket

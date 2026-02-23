@@ -3,6 +3,7 @@ import AddNewMarket from '../pages/content-manager/ManageMarket/AddNewMarket';
 import ManageContentUserProfile from '../pages/content-manager/ManageMarket/ManageContentUserProfile';
 import ManageMarket from '../pages/content-manager/ManageMarket/ManageMarket';
 import ManageMarketDetails from '../pages/content-manager/ManageMarket/ManageMarketDetails';
+import UpdateMarket from '../pages/content-manager/ManageMarket/UpdateMarket';
 import SupportManagerProfile from '../pages/support-manager/support-manager-profile/SupportManagerProfile';
 
 export const ContentManagerRoutes = {
@@ -18,6 +19,10 @@ export const ContentManagerRoutes = {
     {
       path: "/content-manager/manage-markets/add-market",
       element: <AddNewMarket/>
+    },
+    {
+      path: "/content-manager/manage-markets/edit-market/:id",
+      element: <UpdateMarket/>
     },
     {
       path: "/content-manager/manage-markets/:id",

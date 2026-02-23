@@ -6,6 +6,7 @@ import { PageLayout } from "../../../components/shared/PageLayout";
 import ImageGallery from "../../../components/shared/imageComponents/ImageGallery";
 import FormalCard from "../../../components/shared/cards/FormalCard";
 import { Button } from "../../../components/ui/button";
+import TakeConfirm from "../../../components/ui/take-confirm";
 
 function ManageMarketDetails() {
   const navigate = useNavigate();
@@ -98,22 +99,26 @@ function ManageMarketDetails() {
         <div className="flex gap-2">
           <Button
             onClick={() => {
-              navigate("/support-manager/profile/update-profile");
+              navigate("/content-manager/manage-markets/edit-market/:id");
             }}
             className="bg-linear-to-bl to-brand from-[#B08D59]"
           >
             <HugeiconsIcon icon={UserEdit01Icon} />
             Update this post{" "}
           </Button>
-          <Button
-            onClick={() => {
-              navigate("/support-manager/profile/change-password");
+          <TakeConfirm
+            title='Are you sure you want to delete?'
+            onConfirm={() => {
+              // TODO: Implement delete logic
             }}
-            className="bg-linear-to-bl to-red-900 from-red-500"
+            confirmText="Delete"
+            cancelText="Cancel"
           >
-            <HugeiconsIcon icon={LockPasswordIcon} />
-            delete this Post
-          </Button>
+            <Button className="bg-linear-to-bl to-red-900 from-red-500 py-5">
+              <HugeiconsIcon icon={LockPasswordIcon} />
+              Delete this Client
+            </Button>
+          </TakeConfirm>
         </div>
       </div>
     </PageLayout>
