@@ -158,8 +158,8 @@ function MarketUpdates() {
 
   return (
     <div className="space-y-6">
-      <PageLayout title="Market Updates">
-        <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4">
+      <PageLayout title="Market Updates" action={
+         <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4">
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Select>
               <SelectTrigger className="w-full sm:w-48 bg-white border-gray-200">
@@ -191,6 +191,8 @@ function MarketUpdates() {
             </div>
           </div>
         </div>
+      }>
+       
 
         <PageContent>
           <DynamicTable columns={columns} data={filteredData} />

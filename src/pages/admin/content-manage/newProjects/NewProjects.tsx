@@ -128,8 +128,8 @@ function NewProjects() {
   const navigate = useNavigate();
 
   const handleView = (id: string) => {
-    console.log("View new project:", id);
-    navigate(`/admin/content-manage/new-projects/${id}`);
+    console.log("View interested client:", id);
+    navigate(`/admin/content-manage/interested-clients/${id}`);
   };
 
   const columns: ColumnDef<ProjectItem>[] = [
@@ -198,7 +198,7 @@ function NewProjects() {
 
   return (
     <div className="space-y-6">
-      <PageLayout title="New Projects">
+      <PageLayout title="New Projects" action={
         <div className="flex flex-col sm:flex-row justify-end mb-4 items-start sm:items-center gap-4 ">
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Select>
@@ -230,6 +230,8 @@ function NewProjects() {
             </div>
           </div>
         </div>
+      }>
+        
 
         <PageContent>
           <DynamicTable columns={columns} data={filteredData} />

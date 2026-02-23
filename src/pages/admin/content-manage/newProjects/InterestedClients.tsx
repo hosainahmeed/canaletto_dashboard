@@ -1,20 +1,14 @@
-import {
-  AddSquareIcon,
-  CircleIcon,
-  City01Icon,
-  UnavailableIcon,
-  UserIcon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Link, useNavigate } from "react-router-dom";
-import IconWrapper from "../../../components/shared/cards/IconWrapper";
-import DynamicTable from "../../../components/shared/DynamicTable";
-import { PageContent, PageLayout } from "../../../components/shared/PageLayout";
-import { Button } from "../../../components/ui/button";
-import TakeConfirm from "../../../components/ui/take-confirm";
-import { cn } from "../../../lib/utils";
+import { useNavigate } from "react-router-dom";
+import IconWrapper from "../../../../components/shared/cards/IconWrapper";
+import { cn } from "../../../../lib/utils";
 
-function ContentManager() {
+import { PageContent } from "../../../../components/shared/PageLayout";
+
+import DynamicTable from "../../../../components/shared/DynamicTable";
+import { Eye } from "lucide-react";
+import FormalCard from "../../../../components/shared/cards/FormalCard";
+
+function InterestedClients() {
   const navigate = useNavigate();
   const columns = [
     {
@@ -45,10 +39,7 @@ function ContentManager() {
       header: "Assigned On",
       accessorKey: "assignedOn",
     },
-    {
-      header: "Status",
-      accessorKey: "status",
-    },
+
     {
       header: "Actions",
       accessorKey: "actions",
@@ -61,33 +52,8 @@ function ContentManager() {
               }}
               className={cn("border p-2 w-fit h-fit rounded border-[#666666]")}
             >
-              <HugeiconsIcon size={16} icon={UserIcon} />
+              <Eye size={16} />
             </IconWrapper>
-            <TakeConfirm
-              title="Are you sure you want to change the status?"
-              cancelText="Cancel"
-              confirmText="Confirm"
-              onConfirm={() => console.log("Confirmed")}
-            >
-              <IconWrapper
-                className={cn(
-                  "border p-2 w-fit h-fit rounded",
-                  row?.original?.status === "Active"
-                    ? "border-[#666666]"
-                    : "border-[#DC3545]",
-                )}
-              >
-                <HugeiconsIcon
-                  color={row?.original?.status === "Active" ? "#666666" : "red"}
-                  size={16}
-                  icon={
-                    row.original.status === "Active"
-                      ? CircleIcon
-                      : UnavailableIcon
-                  }
-                />
-              </IconWrapper>
-            </TakeConfirm>
           </div>
         );
       },
@@ -196,22 +162,15 @@ function ContentManager() {
     },
   ];
   return (
-    <PageLayout
-      title="Content Manager"
-      action={
-        <Link to={`/admin/content-manager/add`}>
-          <Button className="bg-brand text-white" variant="outline">
-            <HugeiconsIcon icon={AddSquareIcon} /> Add New Manager{" "}
-          </Button>
-        </Link>
-      }
-      icon={<HugeiconsIcon icon={City01Icon} />}
-    >
-      <PageContent>
-        <DynamicTable columns={columns} data={data} />
-      </PageContent>
-    </PageLayout>
+    <div>
+      <FormalCard
+        header="Interested Clients"
+        headerStyle="font-nunito-semibold-italic"
+      >
+        <DynamicTable columns={columns} data={data} header={false} />
+      </FormalCard>
+    </div>
   );
 }
 
-export default ContentManager;
+export default InterestedClients;

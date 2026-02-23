@@ -5,6 +5,7 @@ import LegalUpdateDetails from '../pages/admin/content-manage/legal-updates/Lega
 import LifestyleUpdateDetails from '../pages/admin/content-manage/lifestyle/LifestyleUpdateDetails';
 import ManageContent from '../pages/admin/content-manage/ManageContent';
 import MarketUpdateDetails from '../pages/admin/content-manage/market-updates/MarketUpdateDetails';
+import InterestedClientProfile from '../pages/admin/content-manage/newProjects/InterestedClientProfile';
 import NewProjectDetails from '../pages/admin/content-manage/newProjects/NewProjectDetails';
 import AddContentManager from '../pages/admin/content-manager-manage/AddContentManager';
 import ContenManagerDetails from '../pages/admin/content-manager-manage/conten-manager-details/ContenManagerDetails';
@@ -93,6 +94,10 @@ export const adminRoutes = {
     {
       path: "/admin/content-manage/new-projects/:id",
       element: <NewProjectDetails />
+    },
+    {
+      path: "/admin/content-manage/interested-clients/:id",
+      element: <InterestedClientProfile />
     },
     {
       path: "/admin/content-manager/:id",
