@@ -2,8 +2,6 @@ import { useNavigate } from "react-router-dom";
 import IconWrapper from "../../../../components/shared/cards/IconWrapper";
 import { cn } from "../../../../lib/utils";
 
-import { PageContent } from "../../../../components/shared/PageLayout";
-
 import DynamicTable from "../../../../components/shared/DynamicTable";
 import { Eye } from "lucide-react";
 import FormalCard from "../../../../components/shared/cards/FormalCard";
@@ -48,7 +46,7 @@ function InterestedClients() {
           <div className="flex gap-2">
             <IconWrapper
               onClick={() => {
-                navigate(`/admin/content-manager/${row?.original?.id}`);
+                navigate(`/admin/content-manage/interested-clients/${row?.original?.id}`);
               }}
               className={cn("border p-2 w-fit h-fit rounded border-[#666666]")}
             >
