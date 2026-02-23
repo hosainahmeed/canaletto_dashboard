@@ -106,8 +106,6 @@ function PropertyDetails() {
       "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80",
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=400&q=80",
       "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=400&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80"
     ]
   }
 
@@ -215,12 +213,13 @@ function PropertyDetails() {
   return (
     <PageLayout title="Property Details">
       <PageContent>
-
         <div className='flex flex-col lg:flex-row gap-6 lg:gap-10'>
-          <ImageGallery
-            images={propertyInfoData.images}
-          />
-          <div className='flex-1'>
+          <div className="flex-1">
+            <ImageGallery
+              images={propertyInfoData.images}
+            />
+          </div>
+          <div className='flex-2'>
             <FormalCard header="Property Invoices">
               <div className='responsive-grid-2'>
                 {propertyInvoiceData.map((item, index) => (
