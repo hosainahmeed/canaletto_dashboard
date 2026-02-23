@@ -106,8 +106,6 @@ function PropertyDetails() {
       "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80",
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=400&q=80",
       "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=400&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80"
     ]
   }
 
@@ -215,14 +213,15 @@ function PropertyDetails() {
   return (
     <PageLayout title="Property Details">
       <PageContent>
-
         <div className='flex flex-col lg:flex-row gap-6 lg:gap-10'>
-          <ImageGallery
-            images={propertyInfoData.images}
-          />
-          <div className='flex-1'>
+          <div className="flex-1">
+            <ImageGallery
+              images={propertyInfoData.images}
+            />
+          </div>
+          <div className='flex-2'>
             <FormalCard header="Property Invoices">
-              <div className='responsive-grid-2'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                 {propertyInvoiceData.map((item, index) => (
                   <div className={cn("border flex justify-between border-[#DDDDDD] p-4 rounded-md")} key={index}>
                     <div>
@@ -243,10 +242,10 @@ function PropertyDetails() {
         <FormalCard
           header="Property information"
         >
-          <div className="responsive-grid-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {propertyDetails.map((detail) => (
               <div key={detail.id}
-                className='p-1'
+                className={cn('p-1', detail.fullWidth ? 'sm:col-span-2 md:col-span-3' : '')}
               >
                 <h3 className="text-[#B0B0B0] font-nunito-semibold-italic text-sm">{detail.label}</h3>
                 <p className="font-bold text-[#666666] text-[16px]">{detail.value}</p>

@@ -198,7 +198,7 @@ function Lifestyle() {
 
   return (
     <div className="space-y-6">
-      <PageLayout title="Lifestyle Content Management">
+      <PageLayout title="Lifestyle Content Management" action={
         <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4 ">
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Select>
@@ -230,6 +230,8 @@ function Lifestyle() {
             </div>
           </div>
         </div>
+      }>
+        
 
         <PageContent>
           <DynamicTable columns={columns} data={filteredData} />

@@ -4,7 +4,9 @@ import ManageClients from '../pages/admin/clients/ManageClients';
 import LegalUpdateDetails from '../pages/admin/content-manage/legal-updates/LegalUpdateDetails';
 import LifestyleUpdateDetails from '../pages/admin/content-manage/lifestyle/LifestyleUpdateDetails';
 import ManageContent from '../pages/admin/content-manage/ManageContent';
+import ManageContentProfile from '../pages/admin/content-manage/ManageContentProfile';
 import MarketUpdateDetails from '../pages/admin/content-manage/market-updates/MarketUpdateDetails';
+import InterestedClientProfile from '../pages/admin/content-manage/newProjects/InterestedClientProfile';
 import NewProjectDetails from '../pages/admin/content-manage/newProjects/NewProjectDetails';
 import AddContentManager from '../pages/admin/content-manager-manage/AddContentManager';
 import ContenManagerDetails from '../pages/admin/content-manager-manage/conten-manager-details/ContenManagerDetails';
@@ -27,6 +29,9 @@ import ManagePropertise from '../pages/admin/properties/ManagePropertise';
 import AddPropertyManager from '../pages/admin/property-manager/AddPropertyManager';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
 import PropertyManagerDetails from '../pages/admin/property-manager/PropertyManagerDetails';
+import AddSupportMember from '../pages/admin/support-team-member/AddSupportMember';
+import SupportMemberDetails from '../pages/admin/support-team-member/details/SupportMemberDetails';
+import SupportTeamMember from '../pages/admin/support-team-member/SupportTeamMember';
 
 export const adminRoutes = {
   children: [
@@ -95,6 +100,14 @@ export const adminRoutes = {
       element: <NewProjectDetails />
     },
     {
+      path: "/admin/content-manage/interested-clients/:id",
+      element: <InterestedClientProfile />
+    },
+    {
+      path: "/admin/content-manage/client-profile/:id",
+      element: <ManageContentProfile />
+    },
+    {
       path: "/admin/content-manager/:id",
       element: <ContenManagerDetails />
     },
@@ -108,7 +121,15 @@ export const adminRoutes = {
     },
     {
       path: "/admin/support",
-      element: <h1>Support Team</h1>
+      element: <SupportTeamMember />
+    },
+    {
+      path: "/admin/support/:id",
+      element: <SupportMemberDetails />
+    },
+    {
+      path: "/admin/support/add",
+      element: <AddSupportMember />
     },
     {
       path: "/admin/terms-and-conditions",

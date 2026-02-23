@@ -1,6 +1,8 @@
 import FormalCard from "../../../../components/shared/cards/FormalCard";
 import ImageGallery from "../../../../components/shared/imageComponents/ImageGallery";
 import { PageLayout } from "../../../../components/shared/PageLayout";
+import InterestedClients from "../../../../assets/Image.svg";
+import { Link } from "react-router-dom";
 
 function LegalUpdateDetails() {
   const legal_update_details = {
@@ -48,13 +50,27 @@ function LegalUpdateDetails() {
                   </p>
                 </div>
 
-                <div>
-                  <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
-                    Posted By
-                  </h3>
-                  <p className="text-gray-700 font-medium">
-                    {legal_update_details.post_by}
-                  </p>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="text-[#B0B0B0] text-sm font-nunito-semibold-italic">
+                      Posted By
+                    </h3>
+                    <p className="text-gray-700 font-medium">
+                      {legal_update_details.post_by}
+                    </p>
+                  </div>
+
+                  <div>
+                    <Link
+                      to="/admin/content-manage/client-profile/:id"
+                      className="text-blue-500 hover:underline"
+                    >
+                      <img
+                        src={InterestedClients}
+                        alt="Back to Market Updates"
+                      />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </FormalCard>
