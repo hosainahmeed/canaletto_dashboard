@@ -1,15 +1,25 @@
-import { AddSquareIcon, Search01Icon, ViewIcon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/react'
-import type { ColumnDef } from '@tanstack/react-table'
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import IconWrapper from '../../../components/shared/cards/IconWrapper'
-import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../../components/ui/select'
-import { Input } from '../../../components/ui/input'
-import DynamicTable from '../../../components/shared/DynamicTable'
-import { Button } from '../../../components/ui/button'
-
+import {
+  AddSquareIcon,
+  Search01Icon,
+  ViewIcon,
+} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import type { ColumnDef } from "@tanstack/react-table";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import IconWrapper from "../../../components/shared/cards/IconWrapper";
+import { PageContent, PageLayout } from "../../../components/shared/PageLayout";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../../components/ui/select";
+import { Input } from "../../../components/ui/input";
+import DynamicTable from "../../../components/shared/DynamicTable";
+import { Button } from "../../../components/ui/button";
 
 export type MarketUpdate = {
   id: string;
@@ -95,13 +105,13 @@ const MOCK_DATA: MarketUpdate[] = [
 ];
 
 function ManageLegal() {
-  const [searchQuery, setSearchQuery] = useState('')
-  const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const handleView = (id: string) => {
-    console.log('View legal update:', id)
-    navigate(`/content-manager/manage-legal/${id}`)
-  }
+    console.log("View legal update:", id);
+    navigate(`/content-manager/manage-legal/${id}`);
+  };
 
   const columns: ColumnDef<MarketUpdate>[] = [
     {
@@ -160,48 +170,49 @@ function ManageLegal() {
 
   return (
     <div className="space-y-6">
-      <PageLayout title="Manage Legal" action={
-         <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4">
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            <Select>
-              <SelectTrigger className="w-full sm:w-48 bg-white border-gray-200">
-                <SelectValue placeholder="Filter by Time" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="24h">Last 24 Hours</SelectItem>
-                  <SelectItem value="week">Last Week</SelectItem>
-                  <SelectItem value="month">Last Month</SelectItem>
-                  <SelectItem value="year">Last Year</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+      <PageLayout
+        title="Manage Legal"
+        action={
+          <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <Select>
+                <SelectTrigger className="w-full sm:w-48 bg-white border-gray-200">
+                  <SelectValue placeholder="Filter by Time" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="24h">Last 24 Hours</SelectItem>
+                    <SelectItem value="week">Last Week</SelectItem>
+                    <SelectItem value="month">Last Month</SelectItem>
+                    <SelectItem value="year">Last Year</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
 
-            <div className="relative w-full sm:w-64">
-              <HugeiconsIcon
-                icon={Search01Icon}
-                size={18}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-              />
-              <Input
-                placeholder="Search By Name"
-                className="pl-10 bg-white border-gray-200 focus:ring-brand focus:border-brand"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
+              <div className="relative w-full sm:w-64">
+                <HugeiconsIcon
+                  icon={Search01Icon}
+                  size={18}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                />
+                <Input
+                  placeholder="Search By Name"
+                  className="pl-10 bg-white border-gray-200 focus:ring-brand focus:border-brand"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
 
               <Link to={`/content-manager/manage-legal/add-legal`}>
-          <Button className="bg-brand text-white" variant="outline">
-            <HugeiconsIcon icon={AddSquareIcon} /> Add New Legal{" "}
-          </Button>
-        </Link>
+                <Button className="bg-brand text-white" variant="outline">
+                  <HugeiconsIcon icon={AddSquareIcon} /> Add New Legal{" "}
+                </Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      }>
-       
-
+        }
+      >
         <PageContent>
           <DynamicTable columns={columns} data={filteredData} />
         </PageContent>

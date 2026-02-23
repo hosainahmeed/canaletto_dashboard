@@ -3,6 +3,10 @@ import AddNewLegal from '../pages/content-manager/ManageLegal/AddNewLegal';
 import ManageLegal from '../pages/content-manager/ManageLegal/ManageLegal';
 import ManageLegalDetails from '../pages/content-manager/ManageLegal/ManageLegalDetails';
 import UpdateLegal from '../pages/content-manager/ManageLegal/UpdateLegal';
+import AddLifeStyle from '../pages/content-manager/ManageLifeStyle/AddLifeStyle';
+import ManageLifeStyle from '../pages/content-manager/ManageLifeStyle/ManageLifeStyle';
+import ManageLifestyleDetails from '../pages/content-manager/ManageLifeStyle/ManageLifestyleDetails';
+import UpdateLifeStyle from '../pages/content-manager/ManageLifeStyle/UpdateLifeStyle';
 import AddNewMarket from '../pages/content-manager/ManageMarket/AddNewMarket';
 import ManageContentUserProfile from '../pages/content-manager/ManageMarket/ManageContentUserProfile';
 import ManageMarket from '../pages/content-manager/ManageMarket/ManageMarket';
@@ -54,7 +58,19 @@ export const ContentManagerRoutes = {
     },
     {
       path: "/content-manager/manage-lifestyles",
-      element: <h1>Manage Lifestyles</h1>
+      element: <ManageLifeStyle/>
+    },
+    {
+      path: "/content-manager/manage-lifestyles/add-lifestyle",
+      element: <AddLifeStyle/>
+    },
+    {
+      path: "/content-manager/manage-lifestyles/lifestyle/:id",
+      element: <ManageLifestyleDetails/>
+    },
+    {
+      path: "/content-manager/manage-lifestyles/lifestyle/update/:id",
+      element: <UpdateLifeStyle/>
     },
     {
       path: "/content-manager/manage-projects",
