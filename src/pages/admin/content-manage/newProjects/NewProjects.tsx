@@ -129,7 +129,7 @@ function NewProjects() {
 
   const handleView = (id: string) => {
     console.log("View interested client:", id);
-    navigate(`/admin/content-manage/interested-clients/${id}`);
+    navigate(`/admin/content-manage/new-projects/${id}`);
   };
 
   const columns: ColumnDef<ProjectItem>[] = [
