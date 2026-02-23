@@ -1,4 +1,8 @@
 import ContentManagerDashboard from '../pages/content-manager/ContentManagerDashboard';
+import AddNewLegal from '../pages/content-manager/ManageLegal/AddNewLegal';
+import ManageLegal from '../pages/content-manager/ManageLegal/ManageLegal';
+import ManageLegalDetails from '../pages/content-manager/ManageLegal/ManageLegalDetails';
+import UpdateLegal from '../pages/content-manager/ManageLegal/UpdateLegal';
 import AddNewMarket from '../pages/content-manager/ManageMarket/AddNewMarket';
 import ManageContentUserProfile from '../pages/content-manager/ManageMarket/ManageContentUserProfile';
 import ManageMarket from '../pages/content-manager/ManageMarket/ManageMarket';
@@ -34,7 +38,19 @@ export const ContentManagerRoutes = {
     },
     {
       path: "/content-manager/manage-legal",
-      element: <h1>Manage Legal</h1>
+      element: <ManageLegal/>
+    },
+    {
+      path: "/content-manager/manage-legal/update-legal/:id",
+      element: <UpdateLegal/>
+    },
+    {
+      path: "/content-manager/manage-legal/:id",
+      element: <ManageLegalDetails/>
+    },
+    {
+      path: "/content-manager/manage-legal/add-legal",
+      element: <AddNewLegal/>
     },
     {
       path: "/content-manager/manage-lifestyles",
