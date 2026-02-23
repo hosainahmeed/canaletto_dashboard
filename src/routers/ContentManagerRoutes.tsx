@@ -1,4 +1,8 @@
 import ContentManagerDashboard from '../pages/content-manager/ContentManagerDashboard';
+import AddNewMarket from '../pages/content-manager/ManageMarket/AddNewMarket';
+import ManageContentUserProfile from '../pages/content-manager/ManageMarket/ManageContentUserProfile';
+import ManageMarket from '../pages/content-manager/ManageMarket/ManageMarket';
+import ManageMarketDetails from '../pages/content-manager/ManageMarket/ManageMarketDetails';
 import SupportManagerProfile from '../pages/support-manager/support-manager-profile/SupportManagerProfile';
 
 export const ContentManagerRoutes = {
@@ -9,7 +13,19 @@ export const ContentManagerRoutes = {
     },
     {
       path: "/content-manager/manage-markets",
-      element: <h1>Manage Markets</h1>
+      element: <ManageMarket/>
+    },
+    {
+      path: "/content-manager/manage-markets/add-market",
+      element: <AddNewMarket/>
+    },
+    {
+      path: "/content-manager/manage-markets/:id",
+      element: <ManageMarketDetails/>
+    },
+    {
+      path: "/content-manager/manage-markets/profile/:id",
+      element: <ManageContentUserProfile/>
     },
     {
       path: "/content-manager/manage-legal",

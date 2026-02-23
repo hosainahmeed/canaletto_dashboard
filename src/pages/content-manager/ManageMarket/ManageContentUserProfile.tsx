@@ -13,7 +13,7 @@ interface ClientDetails {
   status: string
 }
 
-const ManageContentProfile = () => {
+const ManageContentUserProfile = () => {
   const navigate = useNavigate()
   const clientDetails: ClientDetails = {
     profileImage: 'https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg',
@@ -55,4 +55,4 @@ const ManageContentProfile = () => {
   )
 }
 
-export default ManageContentProfile
+export default ManageContentUserProfile
