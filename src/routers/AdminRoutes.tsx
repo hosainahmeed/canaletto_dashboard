@@ -29,6 +29,9 @@ import ManagePropertise from '../pages/admin/properties/ManagePropertise';
 import AddPropertyManager from '../pages/admin/property-manager/AddPropertyManager';
 import PropertyManager from '../pages/admin/property-manager/PropertyManager';
 import PropertyManagerDetails from '../pages/admin/property-manager/PropertyManagerDetails';
+import AddSupportMember from '../pages/admin/support-team-member/AddSupportMember';
+import SupportMemberDetails from '../pages/admin/support-team-member/details/SupportMemberDetails';
+import SupportTeamMember from '../pages/admin/support-team-member/SupportTeamMember';
 
 export const adminRoutes = {
   children: [
@@ -118,7 +121,15 @@ export const adminRoutes = {
     },
     {
       path: "/admin/support",
-      element: <h1>Support Team</h1>
+      element: <SupportTeamMember />
+    },
+    {
+      path: "/admin/support/:id",
+      element: <SupportMemberDetails />
+    },
+    {
+      path: "/admin/support/add",
+      element: <AddSupportMember />
     },
     {
       path: "/admin/terms-and-conditions",

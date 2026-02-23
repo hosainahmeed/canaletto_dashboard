@@ -1,9 +1,8 @@
 import {
   AddSquareIcon,
   CircleIcon,
-  City01Icon,
   UnavailableIcon,
-  UserIcon,
+  UserIcon
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Link, useNavigate } from "react-router-dom";
@@ -205,7 +204,6 @@ function ContentManager() {
           </Button>
         </Link>
       }
-      icon={<HugeiconsIcon icon={City01Icon} />}
     >
       <PageContent>
         <DynamicTable columns={columns} data={data} />

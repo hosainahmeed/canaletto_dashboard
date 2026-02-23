@@ -118,9 +118,9 @@ const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, s
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button onClick={() => setShowNotification(!showNotification)} variant="ghost" size="icon" className="rounded-2xl relative">
-                      {!showNotification ? <Bell className="h-5 w-5" /> : <X className="h-5 w-5" />}
-                      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                    <Button onClick={() => setShowNotification(!showNotification)} variant="ghost" size="icon" className="rounded-md bg-amber-50 border border-border relative">
+                      {!showNotification ? <Bell className="h-5 w-5 text-brand" /> : <X className="h-5 w-5" />}
+                      <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                         2
                       </span>
                       {
@@ -164,7 +164,7 @@ const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, s
                 </Tooltip>
               </TooltipProvider>
 
-              <Avatar className="h-9 w-9 border-2 border-primary">
+              <Avatar className="h-9 w-9 border border-border rounded">
                 <AvatarImage src="/placeholder.svg?height=40&width=40" alt="User" />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
