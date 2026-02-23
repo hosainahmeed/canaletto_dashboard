@@ -4,6 +4,7 @@ import ManageClients from '../pages/admin/clients/ManageClients';
 import LegalUpdateDetails from '../pages/admin/content-manage/legal-updates/LegalUpdateDetails';
 import LifestyleUpdateDetails from '../pages/admin/content-manage/lifestyle/LifestyleUpdateDetails';
 import ManageContent from '../pages/admin/content-manage/ManageContent';
+import ManageContentProfile from '../pages/admin/content-manage/ManageContentProfile';
 import MarketUpdateDetails from '../pages/admin/content-manage/market-updates/MarketUpdateDetails';
 import InterestedClientProfile from '../pages/admin/content-manage/newProjects/InterestedClientProfile';
 import NewProjectDetails from '../pages/admin/content-manage/newProjects/NewProjectDetails';
@@ -98,6 +99,10 @@ export const adminRoutes = {
     {
       path: "/admin/content-manage/interested-clients/:id",
       element: <InterestedClientProfile />
+    },
+    {
+      path: "/admin/content-manage/client-profile/:id",
+      element: <ManageContentProfile />
     },
     {
       path: "/admin/content-manager/:id",
