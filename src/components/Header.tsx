@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion"
 import {
   Bell,
   Menu,
@@ -8,18 +9,50 @@ import {
 import { useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import logo from "../assets/brand-logo.svg"
+import { IMAGE } from '../constant/image.index'
 import { cn } from "../lib/utils"
 import { MENU } from './menu'
 import Sidebar from './Sidebar'
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Button } from "./ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
-
 const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, setSidebarOpen: (open: boolean) => void, role: string }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const menuItems = MENU[role as keyof typeof MENU]
   const navigate = useNavigate()
-
+  const [showNotification, setShowNotification] = useState(false)
+  const notificationData = [
+    {
+      _id: "1",
+      title: "New Client Added",
+      message: "Rakib Hasan has successfully created an investor account.",
+      createAt: "5 min ago"
+    },
+    {
+      _id: "2",
+      title: "New Project Added",
+      message: "A new project added by Syed Rakib Hasan.",
+      createAt: "10 min ago"
+    },
+    {
+      _id: "3",
+      title: "Project Update",
+      message: "The project phase has been changed to On-Track.",
+      createAt: "15 min ago"
+    },
+    {
+      _id: "4",
+      title: "New Client Assigned",
+      message: "Jannatul Huda has been assigned to the project.",
+      createAt: "20 min ago"
+    },
+    {
+      _id: "5",
+      title: "New Client Review",
+      message: "Rakib Hasan has left a review for the client.",
+      createAt: "25 min ago"
+    }
+  ]
   return (
     <div className="relative bg-background overflow-hidden">
 
@@ -85,12 +118,47 @@ const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, s
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" className="rounded-2xl relative">
-                      <Bell className="h-5 w-5" />
+                    <Button onClick={() => setShowNotification(!showNotification)} variant="ghost" size="icon" className="rounded-2xl relative">
+                      {!showNotification ? <Bell className="h-5 w-5" /> : <X className="h-5 w-5" />}
                       <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                         2
                       </span>
+                      {
+                        showNotification && (
+                          <AnimatePresence>
+                            <motion.div
+                              initial={{ opacity: 0, y: -20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -20 }}
+                              transition={{ duration: 0.2 }}
+                              className="absolute top-16 right-4 w-80 bg-background border border-border rounded-lg shadow-lg"
+                            >
+                              <div className="p-4">
+                                <div className="flex items-center justify-between">
+                                  <h1>Notifications</h1>
+                                  <Button className='text-xs text-[#007BFF] underline cursor-pointer' type="button" variant="link">
+                                    Mark all as read
+                                  </Button>
+                                </div>
+                                <div className="flex flex-col gap-4 w-full overflow-y-auto h-70vh">
+                                  {
+                                    notificationData.map((notification) => (
+                                      <div className='border border-[#DDDDDD] rounded-md bg-[#FBF8F3] p-4' key={notification._id}>
+                                        <div className="flex gap-4">
+                                          <img className='w-12 h-12' src={IMAGE.notify} alt="notify" />
+                                          <h1 className='text-start word-wrap text-wrap'>{notification.message}</h1>
+                                        </div>
+                                      </div>
+                                    ))
+                                  }
+                                </div>
+                              </div>
+                            </motion.div>
+                          </AnimatePresence>
+                        )
+                      }
                     </Button>
+
                   </TooltipTrigger>
                   <TooltipContent>Notifications</TooltipContent>
                 </Tooltip>

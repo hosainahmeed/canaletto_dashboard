@@ -18,6 +18,7 @@ function App() {
         </Button>
         <Button variant="ghost" size="icon" className="hidden md:flex" onClick={() => setSidebarOpen(!sidebarOpen)}>
           <PanelLeft className="h-5 w-5" />
+
         </Button>
         <div className="flex flex-1 items-center justify-between">
           {/* <h1 className="text-xl font-semibold">Designali Creative</h1> */}
