@@ -1,11 +1,11 @@
 import { Download, Eye } from "lucide-react";
-import FormalCard from "../../../../components/shared/cards/FormalCard";
+import FormalCard from "../../../components/shared/cards/FormalCard";
 import {
   PageContent,
   PageLayout,
-} from "../../../../components/shared/PageLayout";
+} from "../../../components/shared/PageLayout";
 
-function PaymentInvoiceDetails() {
+function PaymentInvoiceDetailsPropetyPanel() {
   const invoiceInfo = {
     invoiceDate: "15 Aug 2025",
     dueDate: "30 Aug 2025",
@@ -38,7 +38,7 @@ function PaymentInvoiceDetails() {
   ];
 
   return (
-    <PageLayout title={`The Wilds\nProject / Payment Invoicess`}>
+    <PageLayout title={`The Wilds\nProject / Payment Invoices`}>
       <PageContent>
         <FormalCard header="Payment Invoices Details">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mb-8">
@@ -122,4 +122,4 @@ function PaymentInvoiceDetails() {
   );
 }
 
-export default PaymentInvoiceDetails;
+export default PaymentInvoiceDetailsPropetyPanel;

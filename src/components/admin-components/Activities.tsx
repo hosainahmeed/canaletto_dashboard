@@ -14,21 +14,6 @@ function Activities() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           className='font-nunito-semibold-italic text-muted-foreground'>Showing activities for Today</motion.h1>
-        <Select>
-          <SelectTrigger className="w-48">
-            <SelectValue placeholder="Today" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="last_24_hours">Last 24 Hours</SelectItem>
-              <SelectItem value="last_week">Last Week</SelectItem>
-              <SelectItem value="last_fortnight">Last Fortnight</SelectItem>
-              <SelectItem value="last_month">Last Month</SelectItem>
-              <SelectItem value="last_year">Last Year</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
       </div>
     )
   }, [])
@@ -83,7 +68,25 @@ function Activities() {
     <Suspense fallback={<Loader className='animate-spin' />}>
       <FormalCard header={
         renderHeader
-      }>
+      }
+        action={
+          <Select>
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Today" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="all">All</SelectItem>
+                <SelectItem value="last_24_hours">Last 24 Hours</SelectItem>
+                <SelectItem value="last_week">Last Week</SelectItem>
+                <SelectItem value="last_fortnight">Last Fortnight</SelectItem>
+                <SelectItem value="last_month">Last Month</SelectItem>
+                <SelectItem value="last_year">Last Year</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        }
+      >
         <div className='flex flex-col gap-4'>
           {
             activitiseData.map((item, index) => (

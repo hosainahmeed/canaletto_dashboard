@@ -160,7 +160,7 @@ const PropertyManager = () => {
       action={
         <Link to={`/admin/property-manager/add`}>
           <Button className='bg-brand text-white' variant="outline">
-            <HugeiconsIcon icon={AddSquareIcon} /> Add New Property</Button></Link>} icon={<HugeiconsIcon icon={City01Icon} />}>
+            <HugeiconsIcon icon={AddSquareIcon} /> Add New Manager</Button></Link>} icon={<HugeiconsIcon icon={City01Icon} />}>
       <PageContent>
         <DynamicTable data={data} columns={column} />
       </PageContent>

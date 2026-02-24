@@ -5,7 +5,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import { ContentManagerRoutes } from "./ContentManagerRoutes";
 import MainLayOut from "./MainLayOut";
-import { PropertiesManagerRoutes } from "./PropertiesManagerRoutes copy";
+import { PropertiesManagerRoutes } from "./PropertiesManagerRoutes";
 import { SupportManagerRoutes } from "./SupportManagerRoutes";
 import ForgotOtp from "../pages/ForgotOtp";
 

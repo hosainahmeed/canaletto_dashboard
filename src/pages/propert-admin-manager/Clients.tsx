@@ -1,6 +1,6 @@
 import { AddSquareIcon, CircleIcon, UnavailableIcon, UserAccountIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import DynamicTable from '../../components/shared/DynamicTable'
 import { PageLayout } from '../../components/shared/PageLayout'
 import TableUserInfo from '../../components/shared/TableUserInfo'
@@ -24,6 +24,7 @@ type Client = {
 }
 
 function Clients() {
+  const navigate = useNavigate()
   const data: Client[] = [
     {
       id: '1',
@@ -119,7 +120,7 @@ function Clients() {
         return (
           <div className="flex items-center gap-2">
             <Button
-              onClick={() => console.log(id, 'View clicked')}
+              onClick={() => navigate(`/property-admin/clients-details/${id}`)}
               size="sm"
               variant="outline"
             >

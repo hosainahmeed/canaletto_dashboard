@@ -1,10 +1,10 @@
+import { CustomerSupportIcon, MessageMultiple02Icon } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
 import { motion } from 'framer-motion'
 import { Loader, TrendingDown, TrendingUp } from 'lucide-react'
 import { lazy, memo, Suspense, useMemo } from 'react'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select'
 import { cn } from '../../lib/utils'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { CustomerSupportIcon, MessageMultiple02Icon } from '@hugeicons/core-free-icons'
 const FormalCard = lazy(() => import('../shared/cards/FormalCard'))
 function SupportPanelActivitise() {
   const renderHeader = useMemo(() => {
@@ -15,21 +15,6 @@ function SupportPanelActivitise() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           className='font-nunito-semibold-italic text-muted-foreground'>Showing activities for Today</motion.h1>
-        <Select>
-          <SelectTrigger className="w-48">
-            <SelectValue placeholder="Today" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="last_24_hours">Last 24 Hours</SelectItem>
-              <SelectItem value="last_week">Last Week</SelectItem>
-              <SelectItem value="last_fortnight">Last Fortnight</SelectItem>
-              <SelectItem value="last_month">Last Month</SelectItem>
-              <SelectItem value="last_year">Last Year</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
       </div>
     )
   }, [])
@@ -46,7 +31,7 @@ function SupportPanelActivitise() {
     {
       title: "Conversations Resolved Today",
       value: "03",
-      icon:  <HugeiconsIcon icon={CustomerSupportIcon} />,
+      icon: <HugeiconsIcon icon={CustomerSupportIcon} />,
       growth: "10%",
       isPositive: true,
       growthStatus: "Higher than yesterday",
@@ -57,7 +42,25 @@ function SupportPanelActivitise() {
     <Suspense fallback={<Loader className='animate-spin' />}>
       <FormalCard header={
         renderHeader
-      }>
+      }
+        action={
+          <Select>
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Today" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="all">All</SelectItem>
+                <SelectItem value="last_24_hours">Last 24 Hours</SelectItem>
+                <SelectItem value="last_week">Last Week</SelectItem>
+                <SelectItem value="last_fortnight">Last Fortnight</SelectItem>
+                <SelectItem value="last_month">Last Month</SelectItem>
+                <SelectItem value="last_year">Last Year</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        }
+      >
         <div className='flex flex-col gap-4'>
           {
             activitiseData.map((item, index) => (

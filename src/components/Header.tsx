@@ -168,6 +168,9 @@ const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, s
                 <AvatarImage src="/placeholder.svg?height=40&width=40" alt="User" />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
+              <div className="bg-green-500/20 px-6 py-1 text-xs text-green-700 capitalize rounded-full">
+                {role}
+              </div>
             </div>
           </div>
         </header>

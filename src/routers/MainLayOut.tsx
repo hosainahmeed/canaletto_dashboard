@@ -75,8 +75,8 @@ function MainLayOut() {
 
   return (
     <div className="flex flex-col justify-center">
-      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} role={"content_admin" as keyof typeof ROLES} />
-      <Sidebar role={"content_admin" as keyof typeof ROLES} sidebarOpen={sidebarOpen} />
+      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} role={"admin" as keyof typeof ROLES} />
+      <Sidebar role={"admin" as keyof typeof ROLES} sidebarOpen={sidebarOpen} />
     </div>
   );
 }
