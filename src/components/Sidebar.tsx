@@ -40,7 +40,8 @@ function Sidebar({ sidebarOpen, role }: { sidebarOpen: boolean, role: keyof type
                 <button
                   className={cn(
                     "flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium",
-                    location.pathname.includes(item.path) ? "bg-linear-to-br from-[#D4B785] text-white to-[#B08D59]" : "hover:bg-muted",
+                    // location.pathname.includes(item.path) ? "bg-linear-to-br from-[#D4B785] text-white to-[#B08D59]" : "hover:bg-muted",
+                    location.pathname === item.path ? "bg-linear-to-br from-[#D4B785] text-white to-[#B08D59]" : "hover:bg-muted",
                   )}
                   onClick={() => navigate(item.path)} // onClick={() => toggleExpanded(item.title)}
                 >
