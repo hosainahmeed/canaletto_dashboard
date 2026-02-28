@@ -7,7 +7,8 @@ export const MENU = {
     {
       title: "Dashboard",
       icon: <HugeiconsIcon icon={Analytics02Icon} />,
-      path: "/admin/dashboard",
+      // path: "/admin/dashboard",
+      path: "/",
     },
     {
       title: "Clients",

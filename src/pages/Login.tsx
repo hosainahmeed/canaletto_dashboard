@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/brandLogo.svg";
 import { Input } from "../components/ui/input";
-import { setUserInLocalStorage } from "../lib/auth";
-import { RedirectByRole } from "../lib/redirects";
 
 interface FormData {
   email: string;
@@ -60,9 +58,10 @@ function Login() {
     try {
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const user = setUserInLocalStorage(formData.email);
+      // const user = setUserInLocalStorage(formData.email);
 
-      RedirectByRole(user.role, navigate);
+      // RedirectByRole(user.role, navigate);
+      navigate("/");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
