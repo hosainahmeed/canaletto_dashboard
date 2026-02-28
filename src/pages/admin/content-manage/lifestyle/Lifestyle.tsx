@@ -1,14 +1,14 @@
 import {
-  ArrowLeft01Icon,
   Search01Icon,
   StarIcon,
-  ViewIcon,
+  ViewIcon
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { ColumnDef } from "@tanstack/react-table";
 import { useState } from "react";
-import DynamicTable from "../../../../components/shared/DynamicTable";
+import { useNavigate } from "react-router-dom";
 import IconWrapper from "../../../../components/shared/cards/IconWrapper";
+import DynamicTable from "../../../../components/shared/DynamicTable";
 import {
   PageContent,
   PageLayout,
@@ -22,7 +22,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../../components/ui/select";
-import { useNavigate } from "react-router-dom";
 
 export type LifestyleItem = {
   id: string;
@@ -231,7 +230,7 @@ function Lifestyle() {
           </div>
         </div>
       }>
-        
+
 
         <PageContent>
           <DynamicTable columns={columns} data={filteredData} />

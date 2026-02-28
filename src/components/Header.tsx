@@ -53,6 +53,8 @@ const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, s
       createAt: "25 min ago"
     }
   ]
+
+
   return (
     <div className="relative bg-background overflow-hidden">
 
@@ -164,7 +166,7 @@ const Header = ({ sidebarOpen, setSidebarOpen, role }: { sidebarOpen: boolean, s
                 </Tooltip>
               </TooltipProvider>
 
-              <Avatar className="h-9 w-9 border border-border rounded">
+              <Avatar className="h-9 w-9 rounded">
                 <AvatarImage src="/placeholder.svg?height=40&width=40" alt="User" />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>

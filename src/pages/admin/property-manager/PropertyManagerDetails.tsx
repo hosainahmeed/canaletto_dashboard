@@ -1,11 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { LockPasswordIcon, UserEdit01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Space } from "lucide-react";
 import { PageContent, PageLayout } from "../../../components/shared/PageLayout";
 import FormalCard from "../../../components/shared/cards/FormalCard";
-import { Space } from "lucide-react";
 import { Button } from "../../../components/ui/button";
-import { HugeiconsIcon } from "@hugeicons/react";
 import { cn } from "../../../lib/utils";
-import { LockPasswordIcon, UserEdit01Icon } from "@hugeicons/core-free-icons";
 
 interface ClientDetails {
   profileImage: string;
@@ -16,7 +15,6 @@ interface ClientDetails {
 }
 
 function PropertyManagerDetails() {
-  const navigate = useNavigate();
 
   const clientDetails: ClientDetails = {
     profileImage:

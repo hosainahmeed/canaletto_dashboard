@@ -1,17 +1,17 @@
 import {
-  ArrowLeft01Icon,
   Search01Icon,
-  ViewIcon,
+  ViewIcon
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { ColumnDef } from "@tanstack/react-table";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import IconWrapper from "../../../../components/shared/cards/IconWrapper";
+import DynamicTable from "../../../../components/shared/DynamicTable";
 import {
   PageContent,
   PageLayout,
 } from "../../../../components/shared/PageLayout";
-import DynamicTable from "../../../../components/shared/DynamicTable";
 import { Input } from "../../../../components/ui/input";
 import {
   Select,
@@ -21,7 +21,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../../components/ui/select";
-import { useNavigate } from "react-router-dom";
 
 export type LegalUpdate = {
   id: string;
@@ -174,7 +173,7 @@ function LegalUpdates() {
   return (
     <div className="space-y-6">
       <PageLayout title="Legal Updates" action={
-         <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4">
+        <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4 mb-4">
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Select>
               <SelectTrigger className="w-full sm:w-48 bg-white border-gray-200">
@@ -207,7 +206,7 @@ function LegalUpdates() {
           </div>
         </div>
       }>
-       
+
 
         <PageContent>
           <DynamicTable columns={columns} data={filteredData} />

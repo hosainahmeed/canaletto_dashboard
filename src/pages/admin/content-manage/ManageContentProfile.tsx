@@ -1,5 +1,4 @@
 
-import { useNavigate } from 'react-router-dom'
 import FormalCard from '../../../components/shared/cards/FormalCard'
 import { PageContent, PageLayout } from '../../../components/shared/PageLayout'
 import Space from '../../../components/shared/Space'
@@ -14,7 +13,6 @@ interface ClientDetails {
 }
 
 const ManageContentProfile = () => {
-  const navigate = useNavigate()
   const clientDetails: ClientDetails = {
     profileImage: 'https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg',
     fullName: 'Roberts Junior',
@@ -48,7 +46,7 @@ const ManageContentProfile = () => {
             </div>
           </div>
           <Space size={4} />
-         
+
         </FormalCard>
       </PageContent>
     </PageLayout>

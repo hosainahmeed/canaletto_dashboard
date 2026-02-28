@@ -1,7 +1,7 @@
 import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { useState } from 'react'
-import { ManageTable } from '../../pages/admin/clients/ManageTable'
+import { ManageTable } from '../../pages/admin/clients/manageTable'
 import { Button } from '../ui/button'
 
 function DynamicTable({ columns, data, header = true }: { columns: any, data: any, header?: boolean }) {
