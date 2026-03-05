@@ -9,7 +9,7 @@ import { useRole } from "../hooks/useRole";
 function MainLayOut() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
    const {role,isLoading} = useRole()
-   console.log("roleeeeeeeeeeeeeeeee=>",role)
+  //  console.log("roleeeeeeeeeeeeeeeee=>",role)
   if(isLoading){
     return <div>Loading...</div>
   }
