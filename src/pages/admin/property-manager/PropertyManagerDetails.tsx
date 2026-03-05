@@ -4,16 +4,37 @@ import { PageContent, PageLayout } from "../../../components/shared/PageLayout";
 import FormalCard from "../../../components/shared/cards/FormalCard";
 import { Button } from "../../../components/ui/button";
 import { cn } from "../../../lib/utils";
-import { useParams } from "react-router-dom";
-import { useGetSinglePropertyManagerQuery } from "../../../redux/propertyManager/propertyMangerApi";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  useDeletePropertyMangerMutation,
+  useGetSinglePropertyManagerQuery
+} from "../../../redux/propertyManager/propertyMangerApi";
 import { Loader } from "lucide-react";
+import toast from "react-hot-toast";
+import TakeConfirm from "../../../components/ui/take-confirm";
+
+
 
 function PropertyManagerDetails() {
   const { id } = useParams();
-  
-  const { data: userDatas, isLoading } = useGetSinglePropertyManagerQuery(id as void);
+  const navigate = useNavigate();
+
+  const { data: userDatas, isLoading } = useGetSinglePropertyManagerQuery(id as string);
+  const [deletePropertyManger, { isLoading: isDeleting }] = useDeletePropertyMangerMutation();
 
   const manager = userDatas?.data;
+
+  const handleDelete = async () => {
+    try {
+      const res = await deletePropertyManger(id as string).unwrap();
+      if (res.success) {
+        toast.success("Property Manager deleted successfully!");
+        navigate("/admin/property-manager", { replace: true });
+      }
+    } catch (err: any) {
+      toast.error(err?.data?.message || "Failed to delete property manager.");
+    }
+  };
 
   if (isLoading) {
     return (
@@ -29,7 +50,7 @@ function PropertyManagerDetails() {
   return (
     <PageLayout title="Property Manager Details">
       <PageContent>
- 
+
         <div className="w-32 h-32 mb-6">
           {manager?.profile_image ? (
             <img
@@ -85,10 +106,26 @@ function PropertyManagerDetails() {
             <HugeiconsIcon icon={UserEdit01Icon} className="mr-2" />
             {status === "Active" ? "Block This Manager" : "Unblock This Manager"}
           </Button>
-          <Button className="bg-linear-to-bl to-red-900 from-red-500 py-6 px-6">
-            <HugeiconsIcon icon={LockPasswordIcon} className="mr-2" />
-            Delete This Manager
-          </Button>
+
+          <TakeConfirm
+            title={`Are you sure you want to delete ${manager?.name}?`}
+            description="This action cannot be undone. This manager will be permanently removed from the system."
+            onConfirm={handleDelete}
+            confirmText="Yes, Delete"
+            cancelText="Cancel"
+          >
+            <Button
+              disabled={isDeleting}
+              className="bg-linear-to-bl to-red-900 from-red-500 py-6 px-6 min-w-[200px] cursor-pointer"
+            >
+              {isDeleting ? (
+                <Loader className="animate-spin w-5 h-5 mr-2" />
+              ) : (
+                <HugeiconsIcon icon={LockPasswordIcon} className="mr-2" />
+              )}
+              {isDeleting ? "Deleting..." : "Delete This Manager"}
+            </Button>
+          </TakeConfirm>
         </div>
       </PageContent>
     </PageLayout>

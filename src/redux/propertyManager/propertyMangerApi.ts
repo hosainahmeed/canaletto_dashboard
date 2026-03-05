@@ -7,19 +7,29 @@ const propertyManagerApi = baseApis.injectEndpoints({
                 url: '/property-manager/create',
                 method: 'POST',
                 body: data
-            })
+            }),
+            invalidatesTags: ['PropertyManager']
         }),
         getAllPropertyManager: build.query<any, void>({
             query: () => ({
                 url: '/property-manager/get-all',
                 method: 'GET',
-            })
+            }),
+            providesTags: ['PropertyManager']
         }),
-        getSinglePropertyManager: build.query<any, void>({
+        getSinglePropertyManager: build.query<any, string>({
             query: (id) => ({
                 url: `/property-manager/get-single/${id}`,
                 method: 'GET',
-            })
+            }),
+            providesTags: ['PropertyManager']
+        }),
+        deletePropertyManger: build.mutation<any, string>({
+            query: (id) => ({
+                url: `/property-manager/delete/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['PropertyManager']
         })
     })
 })
@@ -27,7 +37,8 @@ const propertyManagerApi = baseApis.injectEndpoints({
 export const {
     useAddPropertyManagerMutation,
     useGetAllPropertyManagerQuery,
-    useGetSinglePropertyManagerQuery
+    useGetSinglePropertyManagerQuery,
+    useDeletePropertyMangerMutation
 } = propertyManagerApi
 
 export default propertyManagerApi

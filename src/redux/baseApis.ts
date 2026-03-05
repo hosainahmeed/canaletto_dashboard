@@ -14,7 +14,7 @@ const baseApis = createApi({
     },
   }),
   tagTypes: [
-    // apis provided tags
+    "PropertyManager"
   ],
   endpoints: () => ({}),
 });
