@@ -4,9 +4,12 @@ import { IMAGE } from '../constant/image.index'
 import { cn } from '../lib/utils'
 import { MENU } from './menu'
 import { ScrollArea } from './ui/scroll-area'
+import { useDispatch } from 'react-redux'
+import { logout } from '../redux/services/authSlice'
 function Sidebar({ sidebarOpen, role }: { sidebarOpen: boolean, role: keyof typeof MENU }) {
   const menuItems = MENU[role]
   const location = useLocation()
+   const dispatch = useDispatch()
   const navigate = useNavigate()
   //   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
 
@@ -17,6 +20,12 @@ function Sidebar({ sidebarOpen, role }: { sidebarOpen: boolean, role: keyof type
   //       [title]: !prev[title],
   //     }))
   //   }
+
+     const handleLogout = () => {
+    dispatch(logout()); 
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div
       className={cn(
@@ -57,13 +66,9 @@ function Sidebar({ sidebarOpen, role }: { sidebarOpen: boolean, role: keyof type
 
         <div className="border-t p-3">
           <div className="space-y-1">
-            <button onClick={() => {
-              localStorage.setItem("user", JSON.stringify({
-                isLoggedIn: false,
-                role: ""
-              }))
-              navigate("/login")
-            }} className="flex w-full items-center gap-3 rounded-2xl px-3 py-2 text-sm font-medium hover:bg-muted">
+            <button 
+            onClick={handleLogout} 
+            className="flex w-full items-center gap-3 rounded-2xl px-3 py-2 text-sm font-medium hover:bg-muted">
               <LogOut className="h-5 w-5" />
               <span>Log out</span>
             </button>

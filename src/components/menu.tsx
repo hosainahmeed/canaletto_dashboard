@@ -3,7 +3,7 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import { ROLES } from "../lib/roles";
 
 export const MENU = {
-  [ROLES.ADMIN as keyof typeof ROLES]: [
+  [ROLES.SUPER_ADMIN as keyof typeof ROLES]: [
     {
       title: "Dashboard",
       icon: <HugeiconsIcon icon={Analytics02Icon} />,

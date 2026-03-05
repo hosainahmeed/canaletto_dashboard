@@ -4,7 +4,7 @@ import type { Role } from './roles'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function RedirectByRole(role: Role, navigate: any) {
   switch (role) {
-    case 'admin':
+    case 'SUPER_ADMIN':
       navigate('/admin/dashboard')
       break
     case 'property_admin':

@@ -1,25 +1,36 @@
 import { Eye, EyeOff, Loader } from "lucide-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
+import { useResetPasswordMutation } from "../redux/services/authApis";
 
 interface FormData {
   email: string;
-  newPassword: string;
+  password: string;
   confirmPassword: string;
 }
 
 function ResetPassword() {
   const navigate = useNavigate();
+  const location = useLocation()
+  const [resetPassword] = useResetPasswordMutation();
+
+  const email = location.state?.email || "";
+
+  useEffect(() => {
+    if (!email) {
+      navigate("/forget-password");
+    }
+  }, [email, navigate]);
 
   const [formData, setFormData] = useState<FormData>({
-    email: "",
-    newPassword: "",
+    email: email,
+    password: "",
     confirmPassword: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showconfirmPassword, setShowconfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,14 +42,14 @@ function ResetPassword() {
   };
 
   const validateForm = () => {
-    if (!formData.newPassword || !formData.confirmPassword) {
+    if (!formData.password || !formData.confirmPassword) {
       return "Please enter both new password and confirm password.";
     }
 
-    if (formData.newPassword !== formData.confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       return "New password and confirm password do not match.";
     }
-    if (formData.newPassword.length < 6) {
+    if (formData.password.length < 6) {
       return "Password must be at least 6 characters.";
     }
 
@@ -57,8 +68,8 @@ function ResetPassword() {
 
     try {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // const user = setUserInLocalStorage(formData.email);
+      const response = await resetPassword(formData).unwrap();
+      console.log("response data===>", response)
 
       navigate("/login")
 
@@ -88,9 +99,9 @@ function ResetPassword() {
             <label className="text-sm text-[#666]"> New Password</label>
             <div className="relative">
               <Input
-                name="newPassword"
+                name="password"
                 type={showPassword ? "text" : "password"}
-                value={formData.newPassword}
+                value={formData.password}
                 onChange={handleChange}
                 placeholder="********"
                 className="py-3 pr-10"
@@ -114,7 +125,7 @@ function ResetPassword() {
             <div className="relative">
               <Input
                 name="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
+                type={showconfirmPassword ? "text" : "password"}
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 placeholder="********"
@@ -122,10 +133,10 @@ function ResetPassword() {
               />
               <button
                 type="button"
-                onClick={() => setShowConfirmPassword((prev) => !prev)}
+                onClick={() => setShowconfirmPassword((prev) => !prev)}
                 className="absolute right-3 top-1/2 -translate-y-1/2"
               >
-                {showConfirmPassword ? (
+                {showconfirmPassword ? (
                   <EyeOff className="w-5 h-5 text-gray-400" />
                 ) : (
                   <Eye className="w-5 h-5 text-gray-400" />

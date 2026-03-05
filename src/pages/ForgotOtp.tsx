@@ -2,10 +2,13 @@ import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
+import { useResendResetCodeMutation, useVerifyResetOtpMutation } from "../redux/services/authApis";
 
 function ForgotPassword() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [verifyResetOtp] = useVerifyResetOtpMutation();
+  const [resendResetCode] = useResendResetCodeMutation();
 
   const { email } = location.state || { email: "" };
 
@@ -59,11 +62,14 @@ function ForgotPassword() {
 
     try {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // const user = setUserInLocalStorage(email);
-      navigate("/reset-password");
+      const response = await verifyResetOtp({email, resetCode: Number(enterCode) }).unwrap();
+      console.log("response data===>",response)
+ 
+      // navigate("/reset-password");
+      navigate("/reset-password", { state: { email, resetCode: Number(enterCode) } });
     } catch (err: any) {
-      setError(err.message || "Something went wrong. Please try again.");
+      const errorMsg = err?.data?.message || "Invalid or expired code.";
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }
@@ -76,7 +82,7 @@ function ForgotPassword() {
     setSuccessMessage(null);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await resendResetCode({email}).unwrap();
 
       console.log(`Verification code resent to ${email}`);
 

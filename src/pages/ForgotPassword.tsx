@@ -2,7 +2,7 @@ import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
-import { setUserInLocalStorage } from "../lib/auth";
+import { useForgotPasswordMutation } from "../redux/services/authApis";
 
 interface FormData {
   email: string
@@ -10,6 +10,7 @@ interface FormData {
 
 function ForgotPassword() {
   const navigate = useNavigate();
+  const [forgotPassword] = useForgotPasswordMutation();
 
   const [formData, setFormData] = useState<FormData>({
     email: ""
@@ -50,14 +51,15 @@ function ForgotPassword() {
 
     try {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      const user = setUserInLocalStorage(formData.email);
-      console.log(user)
+      const response = await forgotPassword(formData).unwrap();
+      console.log("response data===>",response)
       // RedirectByRole(user.role, navigate);
-      navigate("/forgot-otp")
+      // navigate("/forgot-otp")
+      navigate("/forgot-otp", { state: { email: formData.email } }); 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      setError(err.message || "Something went wrong. Please try again.");
+      const errorMsg = err?.data?.message || "Something went wrong. Please try again.";
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }

@@ -24,7 +24,7 @@ export const useRoleRedirect = () => {
     }
 
 
-    const userData = data?.data;
+    const userData = data?.data?.user;
     const role = userData?.role as UserRole;
 
     if (userData) {
