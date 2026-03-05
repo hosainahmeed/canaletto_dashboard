@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router";
-import { adminRoutes } from "./AdminRoutes";
-import Login from "../pages/Login";
+import ForgotOtp from "../pages/ForgotOtp";
 import ForgotPassword from "../pages/ForgotPassword";
+import Login from "../pages/Login";
 import ResetPassword from "../pages/ResetPassword";
+import { adminRoutes } from "./AdminRoutes";
 import { ContentManagerRoutes } from "./ContentManagerRoutes";
 import MainLayOut from "./MainLayOut";
 import { PropertiesManagerRoutes } from "./PropertiesManagerRoutes";
 import { SupportManagerRoutes } from "./SupportManagerRoutes";
-import ForgotOtp from "../pages/ForgotOtp";
+import CheckRoutes from '../pages/CheckRoutes';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/reset-password",
     element: <ResetPassword />
+  },
+  {
+    path: "/",
+    element: <CheckRoutes />
   },
   {
     path: "/",
