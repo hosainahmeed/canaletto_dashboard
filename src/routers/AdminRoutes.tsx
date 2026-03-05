@@ -36,7 +36,7 @@ import SupportTeamMember from '../pages/admin/support-team-member/SupportTeamMem
 export const adminRoutes = {
   children: [
     {
-      path: "/",
+      path: "/admin/dashboard",
       element: <AdminDashboard />
     },
     {
