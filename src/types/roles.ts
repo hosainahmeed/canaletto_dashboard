@@ -1,6 +1,14 @@
 // types/role.ts
+// hossain vai
+// export type UserRole =
+//   | "admin"
+//   | "property_admin"
+//   | "content_admin"
+//   | "support_member";
+
+// me
 export type UserRole =
-  | "admin"
+  | "SUPER_ADMIN"
   | "property_admin"
   | "content_admin"
   | "support_member";

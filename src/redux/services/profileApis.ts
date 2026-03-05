@@ -2,9 +2,9 @@ import baseApis from "../baseApis";
 
 const profileApis = baseApis.injectEndpoints({
   endpoints: (build) => ({
-    getProfile: build.query({
+    getProfile: build.query<any, void>({
       query: () => ({
-        url: '/profile',
+        url: '/user/get-my-profile',
         method: 'GET'
       })
     }),

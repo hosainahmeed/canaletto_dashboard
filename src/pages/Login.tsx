@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/brandLogo.svg";
 import { Input } from "../components/ui/input";
 import { useLoginMutation } from "../redux/services/authApis";
+import { useDispatch } from "react-redux";
+import {  setToken } from "../redux/services/authSlice";
 
 interface FormData {
   email: string;
@@ -12,13 +14,14 @@ interface FormData {
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   // redux hook.
   const [login] = useLoginMutation()
 
   const [formData, setFormData] = useState<FormData>({
     email: "",
-    password: "",
-  });
+    password: ""
+    });
 
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -60,16 +63,14 @@ function Login() {
 
     try {
       setLoading(true);
-      // await new Promise((resolve) => setTimeout(resolve, 1000));
-      // const user = setUserInLocalStorage(formData.email);
-      const result = await login(formData).unwrap();
-      console.log("user login",result)
 
-      // RedirectByRole(user.role, navigate);
+      const result = await login(formData).unwrap();
+      dispatch(setToken({ accessToken: result.data?.accessToken }));
+
       navigate("/");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     } catch (err: any) {
-      console.log("login failed",err.data.message)
+      console.log("login failed", err.data.message)
       setError(err.data.message || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
