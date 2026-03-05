@@ -62,9 +62,9 @@ function ForgotPassword() {
 
     try {
       setLoading(true);
-      const response = await verifyResetOtp({email, resetCode: Number(enterCode) }).unwrap();
-      console.log("response data===>",response)
- 
+      const response = await verifyResetOtp({ email, resetCode: Number(enterCode) }).unwrap();
+      console.log("response data===>", response)
+
       // navigate("/reset-password");
       navigate("/reset-password", { state: { email, resetCode: Number(enterCode) } });
     } catch (err: any) {
@@ -82,7 +82,7 @@ function ForgotPassword() {
     setSuccessMessage(null);
 
     try {
-      await resendResetCode({email}).unwrap();
+      await resendResetCode({ email }).unwrap();
 
       console.log(`Verification code resent to ${email}`);
 
