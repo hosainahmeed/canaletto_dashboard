@@ -5,26 +5,26 @@ import SupportManagerProfile from "../pages/support-manager/support-manager-prof
 import SupportManagerDashboard from "../pages/support-manager/SupportManagerDashboard";
 
 export const SupportManagerRoutes = {
-    children: [
-        {
-            path: "/support-manager/dashboard",
-            element: <SupportManagerDashboard />,
-        },
-        {
-            path: "/support-manager/chat",
-            element: <Chat/>
-        },
-        {
-            path: "/support-manager/profile",
-            element: <SupportManagerProfile />
-        },
-        {
-            path: "/support-manager/profile/change-password",
-            element: <ChangePassword />
-        },
-        {
-            path: "/support-manager/profile/update-profile",
-            element: <UpdateProfile />
-        }
-    ],
+  children: [
+    {
+      path: "/support-manager/dashboard",
+      element: <SupportManagerDashboard />,
+    },
+    {
+      path: "/support-manager/chat",
+      element: <Chat />
+    },
+    {
+      path: "/support-manager/profile",
+      element: <SupportManagerProfile />
+    },
+    {
+      path: "/support-manager/profile/change-password",
+      element: <ChangePassword />
+    },
+    {
+      path: "/support-manager/profile/update-profile",
+      element: <UpdateProfile />
+    }
+  ],
 };
