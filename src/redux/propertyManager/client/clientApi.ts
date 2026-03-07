@@ -1,4 +1,5 @@
-import baseApis from "../../baseApis";
+import baseApis from "../../baseApis"
+
 
 const clientApi = baseApis.injectEndpoints({
     endpoints: (build) => ({
@@ -10,7 +11,7 @@ const clientApi = baseApis.injectEndpoints({
             }),
             invalidatesTags: ['Client']
         }),
-        getAllClient: build.query<any, void>({
+        getAllClients: build.query<any, void>({
             query: () => ({
                 url: '/client/get-all',
                 method: 'GET',
@@ -36,7 +37,7 @@ const clientApi = baseApis.injectEndpoints({
 
 export const {
     useAddClientMutation,
-    useGetAllClientQuery,
+    useGetAllClientsQuery,
     useGetSingleClientQuery,
     useDeleteClientMutation
 } = clientApi

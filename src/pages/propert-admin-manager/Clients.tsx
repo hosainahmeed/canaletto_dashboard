@@ -1,5 +1,6 @@
 import { AddSquareIcon, CircleIcon, UnavailableIcon, UserAccountIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
+import { useState, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import DynamicTable from '../../components/shared/DynamicTable'
 import { PageLayout } from '../../components/shared/PageLayout'
@@ -12,51 +13,38 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import TakeConfirm from '../../components/ui/take-confirm'
 import { cn } from '../../lib/utils'
 
-type Client = {
-  id: string
-  img: string
-  name: string
-  email: string
-  phone: string
-  property: string
-  joinedOn: string
-  status: 'Active' | 'Blocked'
-}
+import { Loader } from 'lucide-react'
+import { useGetAllClientsQuery } from '../../redux/propertyManager/client/clientApi'
 
 function Clients() {
   const navigate = useNavigate()
-  const data: Client[] = [
-    {
-      id: '1',
-      img: 'https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg',
-      name: 'Emma Wilson',
-      email: 'tanim.cse@gmail.com',
-      phone: '+1 919-555-0284',
-      property: 'Canaletto Sky World',
-      joinedOn: 'Jul 10, 2025',
-      status: 'Active',
-    },
-    {
-      id: '2',
-      img: 'https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg',
-      name: 'Chris Brown',
-      email: 'tanim.cse@gmail.com',
-      phone: '+1 919-555-0284',
-      property: 'Canaletto Sky World',
-      joinedOn: 'Jul 10, 2025',
-      status: 'Active',
-    },
-    {
-      id: '3',
-      img: 'https://krita-artists.org/uploads/default/original/3X/c/f/cfc4990e32f31acd695481944f2163e96ff7c6ba.jpeg',
-      name: 'Chris Brown',
-      email: 'tanim.cse@gmail.com',
-      phone: '+1 919-555-0284',
-      property: 'Canaletto Sky World',
-      joinedOn: 'Jul 10, 2025',
-      status: 'Blocked',
-    },
-  ]
+  
+
+  const { data: clientsResponse, isLoading } = useGetAllClientsQuery(undefined)
+  
+
+  const [searchTerm, setSearchTerm] = useState('')
+  const [statusFilter, setStatusFilter] = useState('all')
+
+
+  const filteredData = useMemo(() => {
+    const allClients = clientsResponse?.data || []
+    
+    return allClients.filter((client: any) => {
+      
+      const matchesSearch = 
+        client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        client.email.toLowerCase().includes(searchTerm.toLowerCase())
+
+      const isActive = client.user?.isActive
+      const matchesStatus = 
+        statusFilter === 'all' || 
+        (statusFilter === 'active' && isActive) || 
+        (statusFilter === 'blocked' && !isActive)
+
+      return matchesSearch && matchesStatus
+    })
+  }, [clientsResponse, searchTerm, statusFilter])
 
   const columns = [
     {
@@ -66,7 +54,7 @@ function Clients() {
       cell: ({ row }: any) => (
         <TableUserInfo
           name={row.original.name}
-          img={row.original.img}
+          img={row.original.profile_image} 
         />
       ),
     },
@@ -84,28 +72,34 @@ function Clients() {
       id: 'property',
       header: 'Assigned Property',
       accessorKey: 'property',
+      cell: () => "N/A"   
     },
     {
       id: 'joinedOn',
       header: 'Joined On',
       accessorKey: 'joinedOn',
+      cell: ({ row }: any) => {
+        return new Date(row.original.joinedOn).toLocaleDateString('en-US', {
+          month: 'short',
+          day: '2-digit',
+          year: 'numeric'
+        })
+      }
     },
     {
       id: 'status',
       header: 'Status',
-      accessorKey: 'status',
+      accessorKey: 'user.isActive',
       cell: ({ row }: any) => {
-        const status = row.original.status
-        const isActive = status === 'Active'
-
+        const isActive = row.original.user?.isActive
         return (
-          <div
-            className={cn("px-3 py-1 rounded-full text-xs font-medium w-fit", {
-              "text-green-600": isActive,
-              "text-red-600": !isActive
-            })}
-          >
-            {status}
+          <div className="flex items-center gap-2">
+             <span className={cn(
+            "px-2 py-1 rounded-md text-xs font-semibold",
+            isActive ? "text-green-500" : "text-red-500"
+          )}>
+            {isActive ? "Active" : "Blocked"}
+          </span>
           </div>
         )
       },
@@ -114,31 +108,29 @@ function Clients() {
       id: 'actions',
       header: 'Actions',
       cell: ({ row }: any) => {
-        const { id, status } = row.original
-        const isActive = status === 'Active'
+        const { id } = row.original
+        const isActive = row.original.user?.isActive
 
         return (
           <div className="flex items-center gap-2">
             <Button
-              onClick={() => navigate(`/property-admin/clients-details/${id}`)}
+              onClick={() => navigate(`/property-admin/clients-details//${id}`)}
               size="sm"
               variant="outline"
             >
               <HugeiconsIcon icon={UserAccountIcon} />
             </Button>
             <TakeConfirm
-              title={isActive ? "Deactivate property?" : "Activate property?"}
-              description="This action will change the visibility of this property."
+              title={isActive ? "Deactivate Client?" : "Activate Client?"}
+              description={`This action will ${isActive ? 'block' : 'unblock'} this client's access.`}
               confirmText="Yes, confirm"
               cancelText="No"
-              onConfirm={() => console.log(id, "Toggle clicked")}
+              onConfirm={() => console.log(id, "Status Toggle")}
             >
-              <Button
-                size="sm"
-                variant="outline"
-              >
+              <Button size="sm" variant="outline">
                 <HugeiconsIcon
                   icon={isActive ? CircleIcon : UnavailableIcon}
+                  className={isActive ? "" : "text-red-500"}
                 />
               </Button>
             </TakeConfirm>
@@ -147,13 +139,11 @@ function Clients() {
       },
     },
   ]
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value)
-  }
+
   const renderAction = () => {
     return (
       <div className='flex gap-2'>
-        <Select>
+        <Select onValueChange={(val) => setStatusFilter(val)} defaultValue="all">
           <SelectTrigger className="w-48">
             <SelectValue placeholder="Filter by Status" />
           </SelectTrigger>
@@ -167,19 +157,32 @@ function Clients() {
         </Select>
         <Field>
           <ButtonGroup>
-            <Input onChange={handleSearch} className='h-9 focus:outline-none! focus:ring-0!' id="input-button-group" placeholder="Type to search..." />
+            <Input 
+              onChange={(e) => setSearchTerm(e.target.value)} 
+              className='h-9 focus:outline-none! focus:ring-0!' 
+              placeholder="Type to search..." 
+            />
             <Button size='default' className="h-9" variant="outline">Search</Button>
           </ButtonGroup>
         </Field>
         <Link to="/property-admin/add-client">
-          <Button size='sm' className='bg-brand hover:bg-brand/90' ><HugeiconsIcon icon={AddSquareIcon} /> Add Client</Button>
+          <Button size='sm' className='bg-brand hover:bg-brand/90'>
+            <HugeiconsIcon icon={AddSquareIcon} /> Add Client
+          </Button>
         </Link>
       </div>
     )
   }
+
   return (
     <PageLayout title="Manage Clients" action={renderAction()}>
-      <DynamicTable data={data} columns={columns} />
+      {isLoading ? (
+        <div className="flex justify-center items-center py-20">
+          <Loader className="animate-spin text-brand" size={40} />
+        </div>
+      ) : (
+        <DynamicTable data={filteredData} columns={columns} />
+      )}
     </PageLayout>
   )
 }
