@@ -17,7 +17,8 @@ const baseApis = createApi({
     "PropertyManager",
     "ContentManager",
     "SupportManager",
-    "Client"
+    "Client",
+    "LifeStyle"
   ],
   endpoints: () => ({}),
 });
