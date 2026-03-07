@@ -11,7 +11,7 @@ import type { UserRole } from '../types/roles';
 // me
 export const ROLE_ROUTES: Record<UserRole, string> = {
   SUPER_ADMIN: "/admin/dashboard",
-  property_admin: "/property-admin/dashboard",
+  PROPERTY_MANAGER: "/property-admin/dashboard",
   content_admin: "/content-manager/dashboard",
   support_member: "/support-manager/dashboard",
 };

@@ -7,7 +7,7 @@ export function RedirectByRole(role: Role, navigate: any) {
     case 'SUPER_ADMIN':
       navigate('/admin/dashboard')
       break
-    case 'property_admin':
+    case 'PROPERTY_MANAGER':
       navigate('/property-admin/dashboard')
       break
     case 'content_admin':

@@ -61,7 +61,7 @@ export const MENU = {
     },
   ] as const,
 
-  [ROLES.PROPERTY_ADMIN as keyof typeof ROLES]: [
+  [ROLES.PROPERTY_MANAGER as keyof typeof ROLES]: [
     { title: 'Dashboard', icon: <HugeiconsIcon icon={Analytics02Icon} />, path: '/property-admin/dashboard' },
     { title: 'Clients', icon: <HugeiconsIcon icon={UserIcon} />, path: '/property-admin/clients' },
     { title: 'Properties', icon: <HugeiconsIcon icon={City01Icon} />, path: '/property-admin/properties' },

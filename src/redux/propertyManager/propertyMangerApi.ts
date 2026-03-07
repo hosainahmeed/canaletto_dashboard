@@ -4,7 +4,7 @@ const propertyManagerApi = baseApis.injectEndpoints({
     endpoints: (build) => ({
         addPropertyManager: build.mutation<any, any>({
             query: (data) => ({
-                url: '/property-manager/create',
+                url: '/client/create',
                 method: 'POST',
                 body: data
             }),
@@ -12,21 +12,21 @@ const propertyManagerApi = baseApis.injectEndpoints({
         }),
         getAllPropertyManager: build.query<any, void>({
             query: () => ({
-                url: '/property-manager/get-all',
+                url: '/client/get-all',
                 method: 'GET',
             }),
             providesTags: ['PropertyManager']
         }),
         getSinglePropertyManager: build.query<any, string>({
             query: (id) => ({
-                url: `/property-manager/get-single/${id}`,
+                url: `/client/get-single/${id}`,
                 method: 'GET',
             }),
             providesTags: ['PropertyManager']
         }),
         deletePropertyManger: build.mutation<any, string>({
             query: (id) => ({
-                url: `/property-manager/delete/${id}`,
+                url: `/client/delete/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['PropertyManager']

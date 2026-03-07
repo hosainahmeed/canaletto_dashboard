@@ -11,7 +11,7 @@ export function getRoleByEmail(email: string): Role {
       'administrator@',
       'esteban_schiller@gmail.com', // Existing admin email
     ],
-    [ROLES.PROPERTY_ADMIN]: [
+    [ROLES.PROPERTY_MANAGER]: [
       'property@',
       'property.admin@',
       'property.administrator@',

@@ -9,6 +9,6 @@
 // me
 export type UserRole =
   | "SUPER_ADMIN"
-  | "property_admin"
+  | "PROPERTY_MANAGER"
   | "content_admin"
   | "support_member";
