@@ -10,5 +10,5 @@
 export type UserRole =
   | "SUPER_ADMIN"
   | "PROPERTY_MANAGER"
-  | "content_admin"
+  | "CONTENT_MANAGER"
   | "support_member";

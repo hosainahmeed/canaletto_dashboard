@@ -10,7 +10,7 @@ export function RedirectByRole(role: Role, navigate: any) {
     case 'PROPERTY_MANAGER':
       navigate('/property-admin/dashboard')
       break
-    case 'content_admin':
+    case 'CONTENT_MANAGER':
       navigate('/content-manager/dashboard')
       break
     case 'support_member':

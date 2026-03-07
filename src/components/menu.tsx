@@ -68,7 +68,7 @@ export const MENU = {
     { title: 'Profile', icon: <HugeiconsIcon icon={UserSettings01Icon} />, path: '/property-admin/profile' },
   ] as const,
 
-  [ROLES.CONTENT_ADMIN as keyof typeof ROLES]: [
+  [ROLES.CONTENT_MANAGER as keyof typeof ROLES]: [
     { title: 'Dashboard', icon: <HugeiconsIcon icon={Analytics02Icon} />, path: '/content-manager/dashboard' },
     { title: 'Manage Markets', icon: <HugeiconsIcon icon={City01Icon} />, path: '/content-manager/manage-markets' },
     { title: 'Legal', icon: <HugeiconsIcon icon={CourtLawIcon} />, path: '/content-manager/manage-legal' },

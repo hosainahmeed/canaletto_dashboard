@@ -31,6 +31,14 @@ const clientApi = baseApis.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['Client']
+        }),
+        updateClient: build.mutation<any, any>({
+            query: ({ id, data }) => ({
+                url: `/client/update/${id}`,
+                method: 'PUT',
+                body: data
+            }),
+            invalidatesTags: ['Client']
         })
     })
 })
@@ -39,7 +47,8 @@ export const {
     useAddClientMutation,
     useGetAllClientsQuery,
     useGetSingleClientQuery,
-    useDeleteClientMutation
+    useDeleteClientMutation,
+    useUpdateClientMutation
 } = clientApi
 
 export default clientApi

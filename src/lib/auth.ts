@@ -18,7 +18,7 @@ export function getRoleByEmail(email: string): Role {
       'realestate@',
       'estate@',
     ],
-    [ROLES.CONTENT_ADMIN]: [
+    [ROLES.CONTENT_MANAGER]: [
       'content@',
       'content.admin@',
       'content.manager@',
@@ -42,7 +42,7 @@ export function getRoleByEmail(email: string): Role {
   }
 
   // Default to content_admin if no pattern matches
-  return ROLES.CONTENT_ADMIN
+  return ROLES.CONTENT_MANAGER
 }
 
 export function setUserInLocalStorage(email: string, name?: string) {

@@ -1,63 +1,102 @@
-import { UserSettings01Icon } from '@hugeicons/core-free-icons'
+import { UserAccountIcon, CircleIcon, UnavailableIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import type { ColumnDef, Row } from '@tanstack/react-table'
-import IconWrapper from '../../../components/shared/cards/IconWrapper'
+import { Button } from '../../../components/ui/button'
+import TakeConfirm from '../../../components/ui/take-confirm'
 import TableUserInfo from '../../../components/shared/TableUserInfo'
 import { cn } from '../../../lib/utils'
- 
-export interface Client {
-  id: string
-  name: string
-  email: string
-  phone: string
-  assignedProperty: string
-  joinedOn: string
-  status: "Active" | "Blocked"
-  img: string
-}
-export const clientColumns = (renderRouting: (id: string) => void): ColumnDef<Client>[] => [
+
+export const clientColumns = (renderRouting: (id: string) => void) => [
   {
-    accessorKey: "name",
-    header: "User Name",
-    cell: ({ row }: { row: Row<Client> }) => (
-      <div className="font-medium">
-        <TableUserInfo name={row?.getValue("name")} img={row?.original?.img} />
-      </div>
+    id: 'name',
+    header: 'User Name',
+    accessorKey: 'name',
+    cell: ({ row }: any) => (
+      <TableUserInfo
+        name={row.original.name}
+        img={row.original.profile_image} 
+      />
     ),
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    id: 'email',
+    header: 'Email',
+    accessorKey: 'email',
   },
   {
-    accessorKey: "phone",
-    header: "Phone",
+    id: 'phone',
+    header: 'Phone',
+    accessorKey: 'phone',
   },
   {
-    accessorKey: "assignedProperty",
-    header: "Assigned Property",
+    id: 'property',
+    header: 'Assigned Property',
+    cell: ({ row }: any) => {
+        return row.original.manager?.name || "Not Assigned"
+    }
   },
   {
-    accessorKey: "joinedOn",
-    header: "Joined On",
+    id: 'joinedOn',
+    header: 'Joined On',
+    accessorKey: 'joinedOn',
+    cell: ({ row }: any) => {
+      if (!row.original.joinedOn) return "N/A";
+      return new Date(row.original.joinedOn).toLocaleDateString('en-US', {
+        month: 'short',
+        day: '2-digit',
+        year: 'numeric'
+      })
+    }
   },
   {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }: { row: Row<Client> }) => (
-      <div className={cn("font-normal", row?.getValue("status") === "Active" ? "text-green-500" : "text-red-500")}>
-        {row?.getValue("status")}
-      </div>
-    ),
+    id: 'status',
+    header: 'Status',
+    cell: ({ row }: any) => {
+      const isActive = row.original.user?.isActive;
+      
+      return (
+        <div className="flex items-center gap-2">
+             <span className={cn(
+            "px-2 py-1 rounded-md text-xs font-semibold",
+            isActive ? "text-green-500" : "text-red-500"
+          )}>
+            {isActive ? "Active" : "Blocked"}
+          </span>
+          </div>
+      )
+    },
   },
   {
-    accessorKey: "actions",
-    header: "Actions",
-    cell: ({ row }: { row: Row<Client> }) => (
-      <IconWrapper onClick={() => renderRouting(row?.original?.id)} className='border w-fit p-2 hover:bg-brand/20'>
-        <HugeiconsIcon size={16} icon={UserSettings01Icon} />
-      </IconWrapper>
-    ),
+    id: 'actions',
+    header: 'Actions',
+    cell: ({ row }: any) => {
+      const { id } = row.original
+      const isActive = row.original.user?.isActive
+
+      return (
+        <div className="flex items-center gap-2">
+          <Button
+            onClick={() => renderRouting(id)}
+            size="sm"
+            variant="outline"
+          >
+            <HugeiconsIcon icon={UserAccountIcon} />
+          </Button>
+          <TakeConfirm
+            title={isActive ? "Block this Client?" : "Unblock this Client?"}
+            description={`Are you sure you want to ${isActive ? 'block' : 'unblock'} this user?`}
+            confirmText="Confirm"
+            cancelText="Cancel"
+            onConfirm={() => console.log("Toggle Status for:", id)}
+          >
+            <Button size="sm" variant="outline">
+              <HugeiconsIcon
+                icon={isActive ? CircleIcon : UnavailableIcon}
+                className={isActive ? "text-gray-500" : "text-red-500"}
+              />
+            </Button>
+          </TakeConfirm>
+        </div>
+      )
+    },
   },
 ]
-

@@ -157,7 +157,7 @@ Roles are defined in `src/lib/roles.ts`:
 export const ROLES = {
   ADMIN: 'admin',
   PROPERTY_ADMIN: 'property_admin',
-  CONTENT_ADMIN: 'content_admin',
+  CONTENT_MANAGER: 'content_manager',
   SUPPORT_MEMBER: 'support_member',
 } as const
 ```
