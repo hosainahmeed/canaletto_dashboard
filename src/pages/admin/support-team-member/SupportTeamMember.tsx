@@ -7,23 +7,43 @@ import { PageContent, PageLayout } from '../../../components/shared/PageLayout';
 import { Button } from '../../../components/ui/button';
 import TakeConfirm from '../../../components/ui/take-confirm';
 import { cn } from '../../../lib/utils';
+import { useGetAllSupportManagerQuery } from '../../../redux/supportManager/supportMangerApi';
+import { Loader } from 'lucide-react'; 
 
 function SupportTeamMember() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  
+
+  const { data: supportManagerData, isLoading } = useGetAllSupportManagerQuery();
+
+  const managers = supportManagerData?.data || [];
+
   const columns = [
     {
       header: 'Manager Name',
-      accessorKey: 'managerName',
-      cell: ({ row }: any) => (
-        <div className="flex items-center gap-2">
-          <img
-            src={row.original.profileImage}
-            alt="Profile"
-            className="w-8 h-8 rounded-full"
-          />
-          <span>{row.original.managerName}</span>
-        </div>
-      ),
+      accessorKey: 'name', 
+      cell: ({ row }: any) => {
+        const name = row?.original?.name || "N/A";
+        const image = row?.original?.profile_image;
+        const firstLetter = name.trim().charAt(0).toUpperCase();
+
+        return (
+          <div className="flex items-center gap-2">
+            {image ? (
+              <img
+                src={image}
+                alt={name}
+                className="w-10 h-10 rounded-full object-cover border"
+              />
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm border border-brand/20">
+                {firstLetter}
+              </div>
+            )}
+            <span className="font-medium text-[#666666]">{name}</span>
+          </div>
+        );
+      },
     },
     {
       header: 'Email',
@@ -35,54 +55,63 @@ function SupportTeamMember() {
     },
     {
       header: 'Assigned On',
-      accessorKey: 'assignedOn',
+      accessorKey: 'createdAt',
+      cell: ({ row }: any) => {
+        return new Date(row.original.createdAt).toLocaleDateString('en-US', {
+          month: 'short',
+          day: '2-digit',
+          year: 'numeric'
+        });
+      }
     },
     {
       header: 'Status',
-      accessorKey: 'status',
-      cell: ({ row }: any) => (
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${row.original.status === 'Active' ? 'text-green-500' : 'text-red-500'
-          }`}>
-          {row.original.status}
-        </span>
-      ),
+      accessorKey: 'user.isActive',
+      cell: ({ row }: any) => {
+        const isActive = row?.original?.user?.isActive;
+        return (
+          <span className={cn(
+            "px-2 py-1 rounded-md text-xs font-semibold",
+            isActive ? "text-green-500" : "text-red-500"
+          )}>
+            {isActive ? "Active" : "Blocked"}
+          </span>
+        );
+      }
     },
     {
       header: 'Actions',
       accessorKey: 'actions',
       cell: ({ row }: any) => {
+        const isActive = row?.original?.user?.isActive;
+        const managerId = row?.original?.id;
+
         return (
           <div className="flex gap-2">
             <IconWrapper
               onClick={() => {
-                navigate(`/admin/support/${row?.original?.id}`);
+                navigate(`/admin/support/${managerId}`);
               }}
-              className={cn("border p-2 w-fit h-fit rounded border-[#666666]")}
+              className={cn("border p-2 w-fit h-fit rounded border-[#666666] cursor-pointer hover:bg-gray-50")}
             >
               <HugeiconsIcon size={16} icon={UserIcon} />
             </IconWrapper>
             <TakeConfirm
-              title="Are you sure you want to change the status?"
+              title={`Are you sure you want to ${isActive ? 'block' : 'unblock'} this member?`}
               cancelText="Cancel"
               confirmText="Confirm"
-              onConfirm={() => console.log("Confirmed")}
+              onConfirm={() => console.log("Status change clicked for:", managerId)}
             >
               <IconWrapper
                 className={cn(
-                  "border p-2 w-fit h-fit rounded",
-                  row?.original?.status === "Active"
-                    ? "border-[#666666]"
-                    : "border-[#DC3545]",
+                  "border p-2 w-fit h-fit rounded cursor-pointer",
+                  isActive ? "border-[#666666] hover:bg-gray-50" : "border-[#DC3545] hover:bg-red-50",
                 )}
               >
                 <HugeiconsIcon
-                  color={row?.original?.status === "Active" ? "#666666" : "red"}
+                  color={isActive ? "#666666" : "#DC3545"}
                   size={16}
-                  icon={
-                    row.original.status === "Active"
-                      ? CircleIcon
-                      : UnavailableIcon
-                  }
+                  icon={isActive ? CircleIcon : UnavailableIcon}
                 />
               </IconWrapper>
             </TakeConfirm>
@@ -90,112 +119,11 @@ function SupportTeamMember() {
         );
       },
     },
-  ]
+  ];
 
-  const data = [
-    {
-      _id: '1',
-      managerName: 'Emily Carter',
-      email: 'tanim.cse@gmail.com',
-      phone: '+1 919-555-0284',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Active',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '2',
-      managerName: 'Robert Davis',
-      email: 'rafiul.dev@gmail.com',
-      phone: '+1 310-555-0247',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Blocked',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '3',
-      managerName: 'Sophia White',
-      email: 'rafiul.dev@gmail.com',
-      phone: '+1 310-555-0247',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Blocked',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '4',
-      managerName: 'Ayesha Rahman',
-      email: 'rubel.cse@gmail.com',
-      phone: '+1 215-555-0773',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Active',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '5',
-      managerName: 'Thomas Baker',
-      email: 'rafiul.dev@gmail.com',
-      phone: '+1 310-555-0247',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Blocked',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '6',
-      managerName: 'James Anderson',
-      email: 'fahim.tech@gmail.com',
-      phone: '+1 720-555-0641',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Active',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '7',
-      managerName: 'Rachel Green',
-      email: 'arif.design@gmail.com',
-      phone: '+1 213-555-0890',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Active',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '8',
-      managerName: 'Karen Thompson',
-      email: 'kamrul.tech@gmail.com',
-      phone: '+1 206-555-0734',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Active',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '9',
-      managerName: 'Thomas Baker',
-      email: 'rafiul.dev@gmail.com',
-      phone: '+1 310-555-0247',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Blocked',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    },
-    {
-      _id: '10',
-      managerName: 'Michael Smith',
-      email: 'shuvo.bd@gmail.com',
-      phone: '+1 212-555-0198',
-      assignedOn: 'Jul 10, 2025',
-      status: 'Active',
-      actions: '--',
-      profileImage: 'https://i.etsystatic.com/31548528/r/il/ffde13/5804742914/il_300x300.5804742914_ap2d.jpg',
-    }
-  ]
   return (
-    <PageLayout title="Support Team Member"
+    <PageLayout
+      title="Support Team Member"
       action={
         <Link to={`/admin/support/add`}>
           <Button className="bg-brand text-white" variant="outline">
@@ -205,10 +133,17 @@ function SupportTeamMember() {
       }
     >
       <PageContent>
-        <DynamicTable columns={columns} data={data} />
+
+        {isLoading ? (
+          <div className="flex justify-center items-center py-20">
+            <Loader className="animate-spin text-brand" size={40} />
+          </div>
+        ) : (
+          <DynamicTable columns={columns} data={managers} />
+        )}
       </PageContent>
     </PageLayout>
-  )
+  );
 }
 
-export default SupportTeamMember
+export default SupportTeamMember;

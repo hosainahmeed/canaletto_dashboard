@@ -75,9 +75,9 @@ function ContentManager() {
       cell: ({ row }: any) => {
         const isActive = row?.original?.user?.isActive;
         return (
-          <span className={cn(
+           <span className={cn(
             "px-2 py-1 rounded-md text-xs font-semibold",
-            isActive ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"
+            isActive ? "text-green-500" : "text-red-500"
           )}>
             {isActive ? "Active" : "Blocked"}
           </span>
