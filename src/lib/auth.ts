@@ -3,10 +3,10 @@ import { ROLES } from './roles'
 
 export function getRoleByEmail(email: string): Role {
   const emailLower = email.toLowerCase()
-  
+
   // Define email patterns for each role
   const rolePatterns = {
-    [ROLES.ADMIN]: [
+    [ROLES.SUPER_ADMIN]: [
       'admin@',
       'administrator@',
       'esteban_schiller@gmail.com', // Existing admin email
@@ -40,14 +40,14 @@ export function getRoleByEmail(email: string): Role {
       return role as Role
     }
   }
-  
+
   // Default to content_admin if no pattern matches
   return ROLES.CONTENT_ADMIN
 }
 
 export function setUserInLocalStorage(email: string, name?: string) {
   const role = getRoleByEmail(email)
-  
+
   const user = {
     name: name || email.split('@')[0], // Use email prefix as name if not provided
     avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name || email.split('@')[0])}&background=random`,
@@ -64,7 +64,7 @@ export function getUserFromLocalStorage() {
   try {
     const userStr = localStorage.getItem('user')
     if (!userStr) return null
-    
+
     const user = JSON.parse(userStr)
     return user
   } catch (error) {
